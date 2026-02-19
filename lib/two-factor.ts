@@ -1,4 +1,4 @@
-import { authenticator } from 'otpauth'
+import * as OTPAuth from 'otpauth'
 import * as crypto from 'crypto'
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Seedance'
@@ -15,13 +15,13 @@ export function generateTwoFactorSecret(email: string): {
   const secret = crypto.randomBytes(20).toString('base64').replace(/[^a-zA-Z0-9]/g, '').substring(0, 32)
 
   // Create TOTP instance
-  const totp = new authenticator.TOTP({
+  const totp = new OTPAuth.TOTP({
     issuer: APP_NAME,
     label: email,
     algorithm: 'SHA1',
     digits: 6,
     period: 30,
-    secret,
+    secret: OTPAuth.Secret.fromBase32(secret),
   })
 
   const uri = totp.toString()
@@ -42,11 +42,11 @@ export function generateTwoFactorSecret(email: string): {
  */
 export function verifyTwoFactorCode(secret: string, code: string): boolean {
   try {
-    const totp = new authenticator.TOTP({
+    const totp = new OTPAuth.TOTP({
       algorithm: 'SHA1',
       digits: 6,
       period: 30,
-      secret,
+      secret: OTPAuth.Secret.fromBase32(secret),
     })
 
     // Allow a time window of +/- 1 period (30 seconds) for clock skew
