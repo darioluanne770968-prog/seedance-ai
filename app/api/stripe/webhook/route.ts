@@ -89,6 +89,9 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const plan = getPlanByPriceId(priceId) || 'BASIC'
   const planConfig = PLANS[plan]
 
+  // Extract period data with type safety
+  const subData = stripeSubscription as unknown as { current_period_start: number; current_period_end: number }
+
   await prisma.subscription.upsert({
     where: { userId },
     create: {
@@ -100,8 +103,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       stripeCustomerId: customerId,
       stripeSubscriptionId: subscriptionId,
       stripePriceId: priceId,
-      currentPeriodStart: new Date(stripeSubscription.current_period_start * 1000),
-      currentPeriodEnd: new Date(stripeSubscription.current_period_end * 1000),
+      currentPeriodStart: new Date(subData.current_period_start * 1000),
+      currentPeriodEnd: new Date(subData.current_period_end * 1000),
     },
     update: {
       plan,
@@ -111,8 +114,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       stripeCustomerId: customerId,
       stripeSubscriptionId: subscriptionId,
       stripePriceId: priceId,
-      currentPeriodStart: new Date(stripeSubscription.current_period_start * 1000),
-      currentPeriodEnd: new Date(stripeSubscription.current_period_end * 1000),
+      currentPeriodStart: new Date(subData.current_period_start * 1000),
+      currentPeriodEnd: new Date(subData.current_period_end * 1000),
       cancelAtPeriodEnd: false,
       canceledAt: null,
     },
@@ -140,6 +143,9 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
 
   const status = mapStripeStatus(subscription.status)
 
+  // Extract period data with type safety
+  const subData = subscription as unknown as { current_period_start: number; current_period_end: number }
+
   await prisma.subscription.updateMany({
     where: {
       OR: [
@@ -151,8 +157,8 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
       plan,
       status,
       stripePriceId: priceId,
-      currentPeriodStart: new Date(subscription.current_period_start * 1000),
-      currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+      currentPeriodStart: new Date(subData.current_period_start * 1000),
+      currentPeriodEnd: new Date(subData.current_period_end * 1000),
       cancelAtPeriodEnd: subscription.cancel_at_period_end,
       canceledAt: subscription.canceled_at
         ? new Date(subscription.canceled_at * 1000)

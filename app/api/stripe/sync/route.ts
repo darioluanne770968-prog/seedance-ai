@@ -36,6 +36,10 @@ export async function POST(req: NextRequest) {
     const plan = getPlanByPriceId(priceId) || 'BASIC'
     const planConfig = PLANS[plan]
 
+    // Extract subscription period data
+    const periodStart = (stripeSub as { current_period_start?: number }).current_period_start
+    const periodEnd = (stripeSub as { current_period_end?: number }).current_period_end
+
     // Update local subscription
     const updated = await prisma.subscription.update({
       where: { userId: session.user.id },
@@ -46,8 +50,8 @@ export async function POST(req: NextRequest) {
         monthlyCredits: planConfig.credits,
         stripeSubscriptionId: stripeSub.id,
         stripePriceId: priceId,
-        currentPeriodStart: new Date(stripeSub.current_period_start * 1000),
-        currentPeriodEnd: new Date(stripeSub.current_period_end * 1000),
+        ...(periodStart && { currentPeriodStart: new Date(periodStart * 1000) }),
+        ...(periodEnd && { currentPeriodEnd: new Date(periodEnd * 1000) }),
         cancelAtPeriodEnd: stripeSub.cancel_at_period_end,
       },
     })
