@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
       },
       data: {
         status: 'FAILED',
-        error: 'Processing timeout - job exceeded maximum duration',
+        errorMessage: 'Processing timeout - job exceeded maximum duration',
       },
     })
 
