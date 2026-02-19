@@ -1,0 +1,243 @@
+{
+  "common": {
+    "appName": "Seedance AI",
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro",
+    "success": "Sucesso",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "submit": "Enviar",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "all": "Todos",
+    "none": "Nenhum",
+    "yes": "Sim",
+    "no": "Não"
+  },
+  "nav": {
+    "home": "Início",
+    "create": "Criar",
+    "tryIt": "Experimente Seedance",
+    "videoAI": "Vídeo IA",
+    "imageAI": "Imagem IA",
+    "aiTools": "Ferramentas IA",
+    "pricing": "Preços",
+    "signIn": "Entrar",
+    "signOut": "Sair",
+    "account": "Conta",
+    "billing": "Faturamento",
+    "myCreations": "Minhas Criações"
+  },
+  "home": {
+    "hero": {
+      "title": "Transforme ideias em vídeos cinematográficos",
+      "subtitle": "Crie vídeos incríveis gerados por IA a partir de texto ou imagens com os modelos de IA mais avançados",
+      "cta": "Começar a criar",
+      "secondaryCta": "Ver demo"
+    },
+    "features": {
+      "title": "Geração de vídeo IA poderosa",
+      "textToVideo": {
+        "title": "Texto para vídeo",
+        "description": "Transforme suas ideias em vídeos impressionantes com apenas um texto"
+      },
+      "imageToVideo": {
+        "title": "Imagem para vídeo",
+        "description": "Dê vida às suas imagens com movimento cinematográfico suave"
+      },
+      "multipleModels": {
+        "title": "Múltiplos modelos IA",
+        "description": "Escolha entre Seedance 2.0, Sora 2, Veo 3 e mais"
+      }
+    }
+  },
+  "create": {
+    "title": "Criar vídeo",
+    "textToVideo": "Texto para vídeo",
+    "imageToVideo": "Imagem para vídeo",
+    "videoToVideo": "Vídeo para vídeo",
+    "videoEffects": "Efeitos de vídeo",
+    "textToImage": "Texto para imagem",
+    "aiImageGenerator": "Gerador de imagens IA",
+    "imageToImageAI": "Imagem para imagem IA",
+    "prompt": {
+      "label": "Prompt",
+      "placeholder": "Descreva o vídeo que você quer criar...",
+      "required": "Prompt (Obrigatório)"
+    },
+    "model": {
+      "label": "Modelo IA",
+      "select": "Selecionar modelo"
+    },
+    "duration": {
+      "label": "Duração",
+      "seconds": "segundos"
+    },
+    "resolution": {
+      "label": "Resolução"
+    },
+    "aspectRatio": {
+      "label": "Proporção"
+    },
+    "generate": "Gerar vídeo",
+    "generating": "Gerando...",
+    "uploadImage": "Enviar imagem",
+    "dropImage": "Arraste a imagem aqui ou clique para enviar",
+    "sampleVideo": "Vídeo de exemplo",
+    "previewHere": "A pré-visualização aparecerá aqui",
+    "createdResults": "Os vídeos criados aparecerão aqui",
+    "features": "Recursos",
+    "tips": "Dicas para melhores resultados",
+    "upgradeNow": "Atualizar agora"
+  },
+  "sidebar": {
+    "videoAI": "VÍDEO IA",
+    "imageAI": "IMAGEM IA",
+    "tools": "FERRAMENTAS",
+    "aiModels": "MODELOS IA",
+    "myCreations": "Minhas Criações",
+    "communityShowcase": "Galeria da Comunidade",
+    "promptGenerator": "Gerador de Prompts",
+    "videoEditor": "Editor de Vídeo",
+    "moreModels": "Mais Modelos IA"
+  },
+  "pricing": {
+    "title": "Preços simples e transparentes",
+    "subtitle": "Escolha o plano certo para você",
+    "monthly": "Mensal",
+    "yearly": "Anual",
+    "save": "Economize {percent}%",
+    "free": {
+      "name": "Grátis",
+      "price": "$0",
+      "description": "Perfeito para experimentar",
+      "features": [
+        "100 créditos/mês",
+        "Resolução 720p",
+        "Modelos IA básicos",
+        "Fila padrão"
+      ]
+    },
+    "basic": {
+      "name": "Básico",
+      "description": "Para criadores casuais",
+      "features": [
+        "500 créditos/mês",
+        "Resolução 1080p",
+        "Todos os modelos IA",
+        "Fila prioritária"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Para profissionais",
+      "features": [
+        "2.000 créditos/mês",
+        "Resolução 4K",
+        "Todos os modelos IA",
+        "Alta prioridade",
+        "Acesso à API"
+      ]
+    },
+    "max": {
+      "name": "Max",
+      "description": "Para usuários avançados",
+      "features": [
+        "10.000 créditos/mês",
+        "Resolução ilimitada",
+        "Todos os modelos IA",
+        "Fila mais rápida",
+        "Acesso à API",
+        "Suporte prioritário"
+      ]
+    },
+    "cta": "Começar",
+    "currentPlan": "Plano atual"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Bem-vindo de volta",
+      "subtitle": "Entre na sua conta",
+      "email": "E-mail",
+      "password": "Senha",
+      "submit": "Entrar",
+      "forgotPassword": "Esqueceu a senha?",
+      "noAccount": "Não tem conta?",
+      "signUp": "Cadastre-se"
+    },
+    "signUp": {
+      "title": "Criar uma conta",
+      "subtitle": "Comece sua jornada com vídeos IA",
+      "name": "Nome",
+      "email": "E-mail",
+      "password": "Senha",
+      "confirmPassword": "Confirmar senha",
+      "submit": "Criar conta",
+      "hasAccount": "Já tem conta?",
+      "signIn": "Entrar"
+    },
+    "forgotPassword": {
+      "title": "Esqueceu a senha?",
+      "subtitle": "Digite seu e-mail e enviaremos um link de recuperação",
+      "submit": "Enviar link",
+      "backToLogin": "Voltar ao login"
+    }
+  },
+  "account": {
+    "title": "Configurações da conta",
+    "profile": {
+      "title": "Perfil",
+      "name": "Nome",
+      "email": "E-mail",
+      "save": "Salvar alterações"
+    },
+    "security": {
+      "title": "Segurança",
+      "changePassword": "Alterar senha",
+      "currentPassword": "Senha atual",
+      "newPassword": "Nova senha",
+      "confirmPassword": "Confirmar nova senha",
+      "twoFactor": "Autenticação de dois fatores",
+      "enable2FA": "Ativar 2FA",
+      "disable2FA": "Desativar 2FA"
+    },
+    "billing": {
+      "title": "Faturamento",
+      "currentPlan": "Plano atual",
+      "credits": "Créditos",
+      "nextBilling": "Próximo faturamento",
+      "managePlan": "Gerenciar plano",
+      "viewHistory": "Ver histórico"
+    }
+  },
+  "videos": {
+    "title": "Meus vídeos",
+    "empty": "Ainda não há vídeos",
+    "emptyDescription": "Comece a criar vídeos IA incríveis",
+    "createFirst": "Criar seu primeiro vídeo",
+    "status": {
+      "pending": "Pendente",
+      "processing": "Processando",
+      "completed": "Concluído",
+      "failed": "Falhou"
+    },
+    "actions": {
+      "download": "Baixar",
+      "share": "Compartilhar",
+      "delete": "Excluir"
+    }
+  },
+  "errors": {
+    "generic": "Algo deu errado. Por favor, tente novamente.",
+    "unauthorized": "Por favor, entre para continuar",
+    "notFound": "Não encontrado",
+    "insufficientCredits": "Créditos insuficientes",
+    "rateLimited": "Muitas solicitações. Por favor, aguarde.",
+    "contentBlocked": "O conteúdo viola nossos termos de serviço"
+  }
+}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import SessionProvider from '@/components/providers/SessionProvider'
+import { IntlProvider } from '@/components/providers/IntlProvider'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -134,7 +135,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <GoogleAnalytics />
         <SessionProvider>
-          {children}
+          <IntlProvider>
+            {children}
+          </IntlProvider>
         </SessionProvider>
       </body>
     </html>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { Sparkles, Volume2, VolumeX, Play } from 'lucide-react'
 import { ImageUploader } from '@/components/upload/ImageUploader'
 
@@ -54,14 +55,10 @@ export function VideoGenerator({
   description,
   defaultModel,
   modelInfo,
-  tips = [
-    'Be specific and descriptive in your prompts',
-    'Include details about lighting, camera angles, and movement',
-    'Higher resolution uses more credits',
-    'Longer videos provide smoother transitions',
-  ],
+  tips,
 }: VideoGeneratorProps) {
   const router = useRouter()
+  const t = useTranslations('create')
   const [mode, setMode] = useState<'text' | 'image'>('text')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -165,7 +162,7 @@ export function VideoGenerator({
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                Text To Video
+                {t('textToVideo')}
               </button>
               <button
                 type="button"
@@ -176,7 +173,7 @@ export function VideoGenerator({
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                Image To Video
+                {t('imageToVideo')}
               </button>
             </div>
 
@@ -184,7 +181,7 @@ export function VideoGenerator({
             {mode === 'image' && (
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Upload Image
+                  {t('uploadImage')}
                 </label>
                 <ImageUploader
                   value={formData.sourceImage}
@@ -195,7 +192,7 @@ export function VideoGenerator({
 
             {/* Model Selection */}
             <div>
-              <label className="block text-sm font-medium mb-2">Model</label>
+              <label className="block text-sm font-medium mb-2">{t('model.label')}</label>
               <select
                 value={formData.model}
                 onChange={(e) => setFormData({ ...formData, model: e.target.value })}
@@ -216,7 +213,7 @@ export function VideoGenerator({
             {/* Prompt */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                Prompt (Required)
+                {t('prompt.required')}
               </label>
               <textarea
                 value={formData.prompt}
@@ -235,7 +232,7 @@ export function VideoGenerator({
 
             {/* Resolution */}
             <div>
-              <label className="block text-sm font-medium mb-2">Resolution</label>
+              <label className="block text-sm font-medium mb-2">{t('resolution.label')}</label>
               <div className="flex gap-2">
                 {RESOLUTIONS.map((res) => (
                   <button
@@ -257,7 +254,7 @@ export function VideoGenerator({
 
             {/* Aspect Ratio */}
             <div>
-              <label className="block text-sm font-medium mb-2">Aspect Ratio</label>
+              <label className="block text-sm font-medium mb-2">{t('aspectRatio.label')}</label>
               <select
                 value={formData.aspectRatio}
                 onChange={(e) => setFormData({ ...formData, aspectRatio: e.target.value })}
@@ -273,7 +270,7 @@ export function VideoGenerator({
 
             {/* Duration */}
             <div>
-              <label className="block text-sm font-medium mb-2">Duration</label>
+              <label className="block text-sm font-medium mb-2">{t('duration.label')}</label>
               <div className="flex gap-2">
                 {DURATIONS.map((dur) => (
                   <button
@@ -307,12 +304,12 @@ export function VideoGenerator({
               {loading ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Creating...</span>
+                  <span>{t('generating')}</span>
                 </>
               ) : (
                 <>
                   <Sparkles className="w-5 h-5" />
-                  <span>Create</span>
+                  <span>{t('generate')}</span>
                 </>
               )}
             </button>
@@ -323,9 +320,9 @@ export function VideoGenerator({
       {/* Right - Preview */}
       <div className="hidden lg:block w-[500px] border-l border-white/10 p-6 bg-black/20">
         <div className="mb-4">
-          <h2 className="text-lg font-semibold">Sample Video</h2>
+          <h2 className="text-lg font-semibold">{t('sampleVideo')}</h2>
           <p className="text-xs text-muted-foreground">
-            (The Created Video results will appear here)
+            ({t('createdResults')})
           </p>
         </div>
 
@@ -356,7 +353,7 @@ export function VideoGenerator({
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/80 to-blue-900/80">
             <div className="text-center">
               <Play className="w-16 h-16 mx-auto mb-4 text-white/50" />
-              <p className="text-sm text-white/50">Preview will appear here</p>
+              <p className="text-sm text-white/50">{t('previewHere')}</p>
             </div>
           </div>
         </div>
@@ -364,7 +361,7 @@ export function VideoGenerator({
         {/* Model Features */}
         {modelInfo?.features && modelInfo.features.length > 0 && (
           <div className="mt-6 p-4 bg-white/5 rounded-lg">
-            <h3 className="font-medium mb-2">{modelInfo.name} Features</h3>
+            <h3 className="font-medium mb-2">{modelInfo.name} {t('features')}</h3>
             <ul className="text-xs text-muted-foreground space-y-2">
               {modelInfo.features.map((feature, i) => (
                 <li key={i}>• {feature}</li>
@@ -374,14 +371,16 @@ export function VideoGenerator({
         )}
 
         {/* Tips */}
-        <div className="mt-6 p-4 bg-white/5 rounded-lg">
-          <h3 className="font-medium mb-2">Tips for better results</h3>
-          <ul className="text-xs text-muted-foreground space-y-2">
-            {tips.map((tip, i) => (
-              <li key={i}>• {tip}</li>
-            ))}
-          </ul>
-        </div>
+        {tips && tips.length > 0 && (
+          <div className="mt-6 p-4 bg-white/5 rounded-lg">
+            <h3 className="font-medium mb-2">{t('tips')}</h3>
+            <ul className="text-xs text-muted-foreground space-y-2">
+              {tips.map((tip, i) => (
+                <li key={i}>• {tip}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   )

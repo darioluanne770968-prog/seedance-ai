@@ -1,0 +1,243 @@
+{
+  "common": {
+    "appName": "Seedance AI",
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten",
+    "success": "Erfolg",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Absenden",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "all": "Alle",
+    "none": "Keine",
+    "yes": "Ja",
+    "no": "Nein"
+  },
+  "nav": {
+    "home": "Startseite",
+    "create": "Erstellen",
+    "tryIt": "Seedance testen",
+    "videoAI": "Video-KI",
+    "imageAI": "Bild-KI",
+    "aiTools": "KI-Tools",
+    "pricing": "Preise",
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "account": "Konto",
+    "billing": "Abrechnung",
+    "myCreations": "Meine Kreationen"
+  },
+  "home": {
+    "hero": {
+      "title": "Verwandeln Sie Ideen in filmreife Videos",
+      "subtitle": "Erstellen Sie atemberaubende KI-generierte Videos aus Text oder Bildern mit den fortschrittlichsten KI-Modellen",
+      "cta": "Jetzt erstellen",
+      "secondaryCta": "Demo ansehen"
+    },
+    "features": {
+      "title": "Leistungsstarke KI-Videogenerierung",
+      "textToVideo": {
+        "title": "Text zu Video",
+        "description": "Verwandeln Sie Ihre Ideen mit einem Textprompt in beeindruckende Videos"
+      },
+      "imageToVideo": {
+        "title": "Bild zu Video",
+        "description": "Erwecken Sie Ihre Bilder mit flüssiger, filmischer Bewegung zum Leben"
+      },
+      "multipleModels": {
+        "title": "Mehrere KI-Modelle",
+        "description": "Wählen Sie aus Seedance 2.0, Sora 2, Veo 3 und mehr"
+      }
+    }
+  },
+  "create": {
+    "title": "Video erstellen",
+    "textToVideo": "Text zu Video",
+    "imageToVideo": "Bild zu Video",
+    "videoToVideo": "Video zu Video",
+    "videoEffects": "Video-Effekte",
+    "textToImage": "Text zu Bild",
+    "aiImageGenerator": "KI-Bildgenerator",
+    "imageToImageAI": "Bild zu Bild KI",
+    "prompt": {
+      "label": "Prompt",
+      "placeholder": "Beschreiben Sie das Video, das Sie erstellen möchten...",
+      "required": "Prompt (Erforderlich)"
+    },
+    "model": {
+      "label": "KI-Modell",
+      "select": "Modell auswählen"
+    },
+    "duration": {
+      "label": "Dauer",
+      "seconds": "Sekunden"
+    },
+    "resolution": {
+      "label": "Auflösung"
+    },
+    "aspectRatio": {
+      "label": "Seitenverhältnis"
+    },
+    "generate": "Video generieren",
+    "generating": "Generierung...",
+    "uploadImage": "Bild hochladen",
+    "dropImage": "Bild hier ablegen oder zum Hochladen klicken",
+    "sampleVideo": "Beispielvideo",
+    "previewHere": "Vorschau wird hier angezeigt",
+    "createdResults": "Erstellte Videos werden hier angezeigt",
+    "features": "Funktionen",
+    "tips": "Tipps für bessere Ergebnisse",
+    "upgradeNow": "Jetzt upgraden"
+  },
+  "sidebar": {
+    "videoAI": "VIDEO-KI",
+    "imageAI": "BILD-KI",
+    "tools": "WERKZEUGE",
+    "aiModels": "KI-MODELLE",
+    "myCreations": "Meine Kreationen",
+    "communityShowcase": "Community-Galerie",
+    "promptGenerator": "Prompt-Generator",
+    "videoEditor": "Video-Editor",
+    "moreModels": "Weitere KI-Modelle"
+  },
+  "pricing": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Wählen Sie den Plan, der zu Ihnen passt",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "save": "{percent}% sparen",
+    "free": {
+      "name": "Kostenlos",
+      "price": "0 $",
+      "description": "Perfekt zum Ausprobieren",
+      "features": [
+        "100 Credits/Monat",
+        "720p Auflösung",
+        "Basis-KI-Modelle",
+        "Standard-Warteschlange"
+      ]
+    },
+    "basic": {
+      "name": "Basic",
+      "description": "Für Gelegenheitsnutzer",
+      "features": [
+        "500 Credits/Monat",
+        "1080p Auflösung",
+        "Alle KI-Modelle",
+        "Prioritäts-Warteschlange"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Für Profis",
+      "features": [
+        "2.000 Credits/Monat",
+        "4K Auflösung",
+        "Alle KI-Modelle",
+        "Hohe Priorität",
+        "API-Zugang"
+      ]
+    },
+    "max": {
+      "name": "Max",
+      "description": "Für Power-User",
+      "features": [
+        "10.000 Credits/Monat",
+        "Unbegrenzte Auflösung",
+        "Alle KI-Modelle",
+        "Schnellste Warteschlange",
+        "API-Zugang",
+        "Prioritäts-Support"
+      ]
+    },
+    "cta": "Loslegen",
+    "currentPlan": "Aktueller Plan"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Willkommen zurück",
+      "subtitle": "Melden Sie sich bei Ihrem Konto an",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "submit": "Anmelden",
+      "forgotPassword": "Passwort vergessen?",
+      "noAccount": "Kein Konto?",
+      "signUp": "Registrieren"
+    },
+    "signUp": {
+      "title": "Konto erstellen",
+      "subtitle": "Starten Sie Ihre KI-Video-Reise",
+      "name": "Name",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "submit": "Konto erstellen",
+      "hasAccount": "Bereits ein Konto?",
+      "signIn": "Anmelden"
+    },
+    "forgotPassword": {
+      "title": "Passwort vergessen?",
+      "subtitle": "Geben Sie Ihre E-Mail ein und wir senden Ihnen einen Reset-Link",
+      "submit": "Reset-Link senden",
+      "backToLogin": "Zurück zum Login"
+    }
+  },
+  "account": {
+    "title": "Kontoeinstellungen",
+    "profile": {
+      "title": "Profil",
+      "name": "Name",
+      "email": "E-Mail",
+      "save": "Änderungen speichern"
+    },
+    "security": {
+      "title": "Sicherheit",
+      "changePassword": "Passwort ändern",
+      "currentPassword": "Aktuelles Passwort",
+      "newPassword": "Neues Passwort",
+      "confirmPassword": "Neues Passwort bestätigen",
+      "twoFactor": "Zwei-Faktor-Authentifizierung",
+      "enable2FA": "2FA aktivieren",
+      "disable2FA": "2FA deaktivieren"
+    },
+    "billing": {
+      "title": "Abrechnung",
+      "currentPlan": "Aktueller Plan",
+      "credits": "Credits",
+      "nextBilling": "Nächste Abrechnung",
+      "managePlan": "Plan verwalten",
+      "viewHistory": "Verlauf anzeigen"
+    }
+  },
+  "videos": {
+    "title": "Meine Videos",
+    "empty": "Noch keine Videos",
+    "emptyDescription": "Beginnen Sie mit der Erstellung beeindruckender KI-Videos",
+    "createFirst": "Erstes Video erstellen",
+    "status": {
+      "pending": "Ausstehend",
+      "processing": "Verarbeitung",
+      "completed": "Abgeschlossen",
+      "failed": "Fehlgeschlagen"
+    },
+    "actions": {
+      "download": "Herunterladen",
+      "share": "Teilen",
+      "delete": "Löschen"
+    }
+  },
+  "errors": {
+    "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "unauthorized": "Bitte melden Sie sich an, um fortzufahren",
+    "notFound": "Nicht gefunden",
+    "insufficientCredits": "Nicht genügend Credits",
+    "rateLimited": "Zu viele Anfragen. Bitte langsamer.",
+    "contentBlocked": "Inhalt verstößt gegen unsere Nutzungsbedingungen"
+  }
+}

@@ -60,12 +60,18 @@
     "title": "创建视频",
     "textToVideo": "文字转视频",
     "imageToVideo": "图像转视频",
+    "videoToVideo": "视频转视频",
+    "videoEffects": "视频特效",
+    "textToImage": "文字转图像",
+    "aiImageGenerator": "AI 图像生成器",
+    "imageToImageAI": "图像转图像 AI",
     "prompt": {
       "label": "提示词",
-      "placeholder": "描述您想要创建的视频..."
+      "placeholder": "描述您想要创建的视频...",
+      "required": "提示词（必填）"
     },
     "model": {
-      "label": "AI 模型",
+      "label": "模型",
       "select": "选择模型"
     },
     "duration": {
@@ -81,7 +87,24 @@
     "generate": "生成视频",
     "generating": "生成中...",
     "uploadImage": "上传图像",
-    "dropImage": "拖放图像到此处或点击上传"
+    "dropImage": "拖放图像到此处或点击上传",
+    "sampleVideo": "示例视频",
+    "previewHere": "预览将在此处显示",
+    "createdResults": "生成的视频将在此处显示",
+    "features": "功能特点",
+    "tips": "获得更好结果的技巧",
+    "upgradeNow": "立即升级"
+  },
+  "sidebar": {
+    "videoAI": "视频 AI",
+    "imageAI": "图像 AI",
+    "tools": "工具",
+    "aiModels": "AI 模型",
+    "myCreations": "我的作品",
+    "communityShowcase": "社区展示",
+    "promptGenerator": "提示词生成器",
+    "videoEditor": "视频编辑器",
+    "moreModels": "更多 AI 模型"
   },
   "pricing": {
     "title": "简单透明的价格",

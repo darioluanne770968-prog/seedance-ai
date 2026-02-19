@@ -1,15 +1,9 @@
 import { getRequestConfig } from 'next-intl/server'
 import { cookies, headers } from 'next/headers'
+import { locales, defaultLocale, type Locale } from './locales'
 
-export const locales = ['en', 'zh'] as const
-export type Locale = (typeof locales)[number]
-
-export const defaultLocale: Locale = 'en'
-
-export const localeNames: Record<Locale, string> = {
-  en: 'English',
-  zh: '中文',
-}
+// Re-export for backwards compatibility
+export { locales, defaultLocale, localeNames, type Locale } from './locales'
 
 export function getLocaleFromCookie(): Locale {
   // This is for client-side use

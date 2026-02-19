@@ -1,0 +1,243 @@
+{
+  "common": {
+    "appName": "Seedance AI",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "نجاح",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "next": "التالي",
+    "submit": "إرسال",
+    "search": "بحث",
+    "filter": "تصفية",
+    "all": "الكل",
+    "none": "لا شيء",
+    "yes": "نعم",
+    "no": "لا"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "create": "إنشاء",
+    "tryIt": "جرب Seedance",
+    "videoAI": "فيديو AI",
+    "imageAI": "صورة AI",
+    "aiTools": "أدوات AI",
+    "pricing": "الأسعار",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "account": "الحساب",
+    "billing": "الفواتير",
+    "myCreations": "إبداعاتي"
+  },
+  "home": {
+    "hero": {
+      "title": "حوّل الأفكار إلى فيديوهات سينمائية",
+      "subtitle": "أنشئ فيديوهات مذهلة بالذكاء الاصطناعي من النص أو الصور باستخدام أحدث نماذج AI",
+      "cta": "ابدأ الإنشاء",
+      "secondaryCta": "شاهد العرض"
+    },
+    "features": {
+      "title": "إنشاء فيديو AI قوي",
+      "textToVideo": {
+        "title": "نص إلى فيديو",
+        "description": "حوّل أفكارك إلى فيديوهات مذهلة بمجرد نص"
+      },
+      "imageToVideo": {
+        "title": "صورة إلى فيديو",
+        "description": "أضف الحياة لصورك بحركة سينمائية سلسة"
+      },
+      "multipleModels": {
+        "title": "نماذج AI متعددة",
+        "description": "اختر من Seedance 2.0، Sora 2، Veo 3 والمزيد"
+      }
+    }
+  },
+  "create": {
+    "title": "إنشاء فيديو",
+    "textToVideo": "نص إلى فيديو",
+    "imageToVideo": "صورة إلى فيديو",
+    "videoToVideo": "فيديو إلى فيديو",
+    "videoEffects": "تأثيرات الفيديو",
+    "textToImage": "نص إلى صورة",
+    "aiImageGenerator": "مولد صور AI",
+    "imageToImageAI": "صورة إلى صورة AI",
+    "prompt": {
+      "label": "الوصف",
+      "placeholder": "صف الفيديو الذي تريد إنشاءه...",
+      "required": "الوصف (مطلوب)"
+    },
+    "model": {
+      "label": "نموذج AI",
+      "select": "اختر نموذج"
+    },
+    "duration": {
+      "label": "المدة",
+      "seconds": "ثواني"
+    },
+    "resolution": {
+      "label": "الدقة"
+    },
+    "aspectRatio": {
+      "label": "نسبة العرض"
+    },
+    "generate": "إنشاء الفيديو",
+    "generating": "جاري الإنشاء...",
+    "uploadImage": "رفع صورة",
+    "dropImage": "اسحب الصورة هنا أو انقر للرفع",
+    "sampleVideo": "فيديو نموذجي",
+    "previewHere": "ستظهر المعاينة هنا",
+    "createdResults": "ستظهر الفيديوهات المنشأة هنا",
+    "features": "المميزات",
+    "tips": "نصائح للحصول على نتائج أفضل",
+    "upgradeNow": "ترقية الآن"
+  },
+  "sidebar": {
+    "videoAI": "فيديو AI",
+    "imageAI": "صورة AI",
+    "tools": "أدوات",
+    "aiModels": "نماذج AI",
+    "myCreations": "إبداعاتي",
+    "communityShowcase": "معرض المجتمع",
+    "promptGenerator": "مولد الوصف",
+    "videoEditor": "محرر الفيديو",
+    "moreModels": "المزيد من نماذج AI"
+  },
+  "pricing": {
+    "title": "أسعار بسيطة وشفافة",
+    "subtitle": "اختر الخطة المناسبة لك",
+    "monthly": "شهري",
+    "yearly": "سنوي",
+    "save": "وفر {percent}%",
+    "free": {
+      "name": "مجاني",
+      "price": "$0",
+      "description": "مثالي للتجربة",
+      "features": [
+        "100 رصيد/شهر",
+        "دقة 720p",
+        "نماذج AI أساسية",
+        "قائمة انتظار عادية"
+      ]
+    },
+    "basic": {
+      "name": "أساسي",
+      "description": "للمبدعين العاديين",
+      "features": [
+        "500 رصيد/شهر",
+        "دقة 1080p",
+        "جميع نماذج AI",
+        "قائمة انتظار أولوية"
+      ]
+    },
+    "pro": {
+      "name": "احترافي",
+      "description": "للمحترفين",
+      "features": [
+        "2,000 رصيد/شهر",
+        "دقة 4K",
+        "جميع نماذج AI",
+        "أولوية عالية",
+        "وصول API"
+      ]
+    },
+    "max": {
+      "name": "ماكس",
+      "description": "للمستخدمين المتقدمين",
+      "features": [
+        "10,000 رصيد/شهر",
+        "دقة غير محدودة",
+        "جميع نماذج AI",
+        "أسرع قائمة انتظار",
+        "وصول API",
+        "دعم أولوية"
+      ]
+    },
+    "cta": "ابدأ الآن",
+    "currentPlan": "الخطة الحالية"
+  },
+  "auth": {
+    "signIn": {
+      "title": "مرحباً بعودتك",
+      "subtitle": "سجل الدخول إلى حسابك",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "signUp": "سجل الآن"
+    },
+    "signUp": {
+      "title": "إنشاء حساب",
+      "subtitle": "ابدأ رحلتك مع فيديوهات AI",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "submit": "إنشاء حساب",
+      "hasAccount": "لديك حساب بالفعل؟",
+      "signIn": "تسجيل الدخول"
+    },
+    "forgotPassword": {
+      "title": "نسيت كلمة المرور؟",
+      "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين",
+      "submit": "إرسال الرابط",
+      "backToLogin": "العودة لتسجيل الدخول"
+    }
+  },
+  "account": {
+    "title": "إعدادات الحساب",
+    "profile": {
+      "title": "الملف الشخصي",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "save": "حفظ التغييرات"
+    },
+    "security": {
+      "title": "الأمان",
+      "changePassword": "تغيير كلمة المرور",
+      "currentPassword": "كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور الجديدة",
+      "twoFactor": "المصادقة الثنائية",
+      "enable2FA": "تفعيل 2FA",
+      "disable2FA": "تعطيل 2FA"
+    },
+    "billing": {
+      "title": "الفواتير",
+      "currentPlan": "الخطة الحالية",
+      "credits": "الأرصدة",
+      "nextBilling": "الفاتورة القادمة",
+      "managePlan": "إدارة الخطة",
+      "viewHistory": "عرض السجل"
+    }
+  },
+  "videos": {
+    "title": "فيديوهاتي",
+    "empty": "لا توجد فيديوهات بعد",
+    "emptyDescription": "ابدأ بإنشاء فيديوهات AI مذهلة",
+    "createFirst": "أنشئ أول فيديو",
+    "status": {
+      "pending": "قيد الانتظار",
+      "processing": "قيد المعالجة",
+      "completed": "مكتمل",
+      "failed": "فشل"
+    },
+    "actions": {
+      "download": "تحميل",
+      "share": "مشاركة",
+      "delete": "حذف"
+    }
+  },
+  "errors": {
+    "generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "unauthorized": "يرجى تسجيل الدخول للمتابعة",
+    "notFound": "غير موجود",
+    "insufficientCredits": "رصيد غير كافٍ",
+    "rateLimited": "طلبات كثيرة جداً. يرجى الانتظار.",
+    "contentBlocked": "المحتوى يخالف شروط الخدمة"
+  }
+}

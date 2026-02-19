@@ -7,6 +7,8 @@ import {
   Play, ChevronDown, Video, Image, Wand2,
   CreditCard, User, LogOut, Menu, X, Layers, Coins, Globe
 } from 'lucide-react'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
+import { useTranslations } from 'next-intl'
 
 const videoModels = [
   { name: 'Seedance 2.0', href: '/create/seedance-2', tag: 'New', tagColor: 'bg-green-500' },
@@ -25,6 +27,7 @@ const imageModels = [
 
 export function Navbar() {
   const { data: session } = useSession()
+  const t = useTranslations('nav')
   const [videoOpen, setVideoOpen] = useState(false)
   const [imageOpen, setImageOpen] = useState(false)
   const [userOpen, setUserOpen] = useState(false)
@@ -72,13 +75,13 @@ export function Navbar() {
                 href="/create"
                 className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Try Seedance
+                {t('tryIt')}
               </Link>
 
               {/* Video AI Dropdown */}
               <div className="relative" onMouseEnter={() => setVideoOpen(true)} onMouseLeave={() => setVideoOpen(false)}>
                 <button className="flex items-center px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  <span>Video AI</span>
+                  <span>{t('videoAI')}</span>
                   <span className="ml-1 px-1.5 py-0.5 text-xs bg-blue-500 text-white rounded">1.5 Pro</span>
                   <ChevronDown className="w-4 h-4 ml-1" />
                 </button>
@@ -129,7 +132,7 @@ export function Navbar() {
               {/* Image AI Dropdown */}
               <div className="relative" onMouseEnter={() => setImageOpen(true)} onMouseLeave={() => setImageOpen(false)}>
                 <button className="flex items-center px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  <span>Image AI</span>
+                  <span>{t('imageAI')}</span>
                   <span className="ml-1 px-1.5 py-0.5 text-xs bg-orange-500 text-white rounded">Nano</span>
                   <ChevronDown className="w-4 h-4 ml-1" />
                 </button>
@@ -174,7 +177,7 @@ export function Navbar() {
                 className="flex items-center px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Layers className="w-4 h-4 mr-1" />
-                AI Tools
+                {t('aiTools')}
               </Link>
 
               {/* Community Showcase */}
@@ -207,12 +210,15 @@ export function Navbar() {
                 href="/pricing"
                 className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Pricing
+                {t('pricing')}
               </Link>
             </div>
 
             {/* Right Side */}
             <div className="flex items-center space-x-4">
+              {/* Language Switcher */}
+              <LanguageSwitcher />
+
               {session ? (
                 <>
                   {/* Credits Display */}
@@ -241,22 +247,22 @@ export function Navbar() {
                           </div>
                           <Link href="/videos" className="flex items-center px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors">
                             <Video className="w-4 h-4 mr-2" />
-                            My Creations
+                            {t('myCreations')}
                           </Link>
                           <Link href="/account" className="flex items-center px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors">
                             <User className="w-4 h-4 mr-2" />
-                            Account
+                            {t('account')}
                           </Link>
                           <Link href="/account/billing" className="flex items-center px-3 py-2 text-sm rounded-lg hover:bg-white/5 transition-colors">
                             <CreditCard className="w-4 h-4 mr-2" />
-                            Billing
+                            {t('billing')}
                           </Link>
                           <button
                             onClick={() => signOut({ callbackUrl: '/' })}
                             className="w-full flex items-center px-3 py-2 text-sm text-red-400 rounded-lg hover:bg-white/5 transition-colors"
                           >
                             <LogOut className="w-4 h-4 mr-2" />
-                            Sign Out
+                            {t('signOut')}
                           </button>
                         </div>
                       </div>
@@ -268,7 +274,7 @@ export function Navbar() {
                   href="/login"
                   className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg text-sm font-medium hover:from-blue-600 hover:to-cyan-500 transition-all"
                 >
-                  Sign In
+                  {t('signIn')}
                 </Link>
               )}
 

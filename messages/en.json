@@ -60,12 +60,18 @@
     "title": "Create Video",
     "textToVideo": "Text to Video",
     "imageToVideo": "Image to Video",
+    "videoToVideo": "Video to Video",
+    "videoEffects": "Video Effects",
+    "textToImage": "Text to Image",
+    "aiImageGenerator": "AI Image Generator",
+    "imageToImageAI": "Image to Image AI",
     "prompt": {
       "label": "Prompt",
-      "placeholder": "Describe the video you want to create..."
+      "placeholder": "Describe the video you want to create...",
+      "required": "Prompt (Required)"
     },
     "model": {
-      "label": "AI Model",
+      "label": "Model",
       "select": "Select a model"
     },
     "duration": {
@@ -81,7 +87,24 @@
     "generate": "Generate Video",
     "generating": "Generating...",
     "uploadImage": "Upload Image",
-    "dropImage": "Drop image here or click to upload"
+    "dropImage": "Drop image here or click to upload",
+    "sampleVideo": "Sample Video",
+    "previewHere": "Preview will appear here",
+    "createdResults": "The Created Video results will appear here",
+    "features": "Features",
+    "tips": "Tips for better results",
+    "upgradeNow": "Upgrade Now"
+  },
+  "sidebar": {
+    "videoAI": "VIDEO AI",
+    "imageAI": "IMAGE AI",
+    "tools": "TOOLS",
+    "aiModels": "AI MODELS",
+    "myCreations": "My Creations",
+    "communityShowcase": "Community Showcase",
+    "promptGenerator": "Prompt Generator",
+    "videoEditor": "Video Editor",
+    "moreModels": "More AI Models"
   },
   "pricing": {
     "title": "Simple, Transparent Pricing",

@@ -1,0 +1,243 @@
+{
+  "common": {
+    "appName": "Seedance AI",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "submit": "Soumettre",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "all": "Tout",
+    "none": "Aucun",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "nav": {
+    "home": "Accueil",
+    "create": "Créer",
+    "tryIt": "Essayer Seedance",
+    "videoAI": "Vidéo IA",
+    "imageAI": "Image IA",
+    "aiTools": "Outils IA",
+    "pricing": "Tarifs",
+    "signIn": "Connexion",
+    "signOut": "Déconnexion",
+    "account": "Compte",
+    "billing": "Facturation",
+    "myCreations": "Mes Créations"
+  },
+  "home": {
+    "hero": {
+      "title": "Transformez vos idées en vidéos cinématographiques",
+      "subtitle": "Créez des vidéos IA époustouflantes à partir de textes ou d'images avec les modèles IA les plus avancés",
+      "cta": "Commencer à créer",
+      "secondaryCta": "Voir la démo"
+    },
+    "features": {
+      "title": "Génération vidéo IA puissante",
+      "textToVideo": {
+        "title": "Texte vers vidéo",
+        "description": "Transformez vos idées en vidéos magnifiques avec un simple texte"
+      },
+      "imageToVideo": {
+        "title": "Image vers vidéo",
+        "description": "Donnez vie à vos images avec un mouvement cinématographique fluide"
+      },
+      "multipleModels": {
+        "title": "Multiples modèles IA",
+        "description": "Choisissez parmi Seedance 2.0, Sora 2, Veo 3 et plus"
+      }
+    }
+  },
+  "create": {
+    "title": "Créer une vidéo",
+    "textToVideo": "Texte vers vidéo",
+    "imageToVideo": "Image vers vidéo",
+    "videoToVideo": "Vidéo vers vidéo",
+    "videoEffects": "Effets vidéo",
+    "textToImage": "Texte vers image",
+    "aiImageGenerator": "Générateur d'images IA",
+    "imageToImageAI": "Image vers image IA",
+    "prompt": {
+      "label": "Prompt",
+      "placeholder": "Décrivez la vidéo que vous voulez créer...",
+      "required": "Prompt (Requis)"
+    },
+    "model": {
+      "label": "Modèle IA",
+      "select": "Sélectionner un modèle"
+    },
+    "duration": {
+      "label": "Durée",
+      "seconds": "secondes"
+    },
+    "resolution": {
+      "label": "Résolution"
+    },
+    "aspectRatio": {
+      "label": "Rapport d'aspect"
+    },
+    "generate": "Générer la vidéo",
+    "generating": "Génération en cours...",
+    "uploadImage": "Télécharger une image",
+    "dropImage": "Déposez l'image ici ou cliquez pour télécharger",
+    "sampleVideo": "Exemple de vidéo",
+    "previewHere": "L'aperçu apparaîtra ici",
+    "createdResults": "Les vidéos créées apparaîtront ici",
+    "features": "Fonctionnalités",
+    "tips": "Conseils pour de meilleurs résultats",
+    "upgradeNow": "Mettre à niveau"
+  },
+  "sidebar": {
+    "videoAI": "VIDÉO IA",
+    "imageAI": "IMAGE IA",
+    "tools": "OUTILS",
+    "aiModels": "MODÈLES IA",
+    "myCreations": "Mes Créations",
+    "communityShowcase": "Vitrine Communauté",
+    "promptGenerator": "Générateur de Prompts",
+    "videoEditor": "Éditeur Vidéo",
+    "moreModels": "Plus de Modèles IA"
+  },
+  "pricing": {
+    "title": "Tarification simple et transparente",
+    "subtitle": "Choisissez le plan qui vous convient",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "save": "Économisez {percent}%",
+    "free": {
+      "name": "Gratuit",
+      "price": "0 $",
+      "description": "Parfait pour essayer",
+      "features": [
+        "100 crédits/mois",
+        "Résolution 720p",
+        "Modèles IA basiques",
+        "File d'attente standard"
+      ]
+    },
+    "basic": {
+      "name": "Basique",
+      "description": "Pour les créateurs occasionnels",
+      "features": [
+        "500 crédits/mois",
+        "Résolution 1080p",
+        "Tous les modèles IA",
+        "File prioritaire"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Pour les professionnels",
+      "features": [
+        "2 000 crédits/mois",
+        "Résolution 4K",
+        "Tous les modèles IA",
+        "File haute priorité",
+        "Accès API"
+      ]
+    },
+    "max": {
+      "name": "Max",
+      "description": "Pour les utilisateurs intensifs",
+      "features": [
+        "10 000 crédits/mois",
+        "Résolution illimitée",
+        "Tous les modèles IA",
+        "File la plus rapide",
+        "Accès API",
+        "Support prioritaire"
+      ]
+    },
+    "cta": "Commencer",
+    "currentPlan": "Plan actuel"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Bon retour",
+      "subtitle": "Connectez-vous à votre compte",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Pas de compte ?",
+      "signUp": "S'inscrire"
+    },
+    "signUp": {
+      "title": "Créer un compte",
+      "subtitle": "Commencez votre aventure vidéo IA",
+      "name": "Nom",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "submit": "Créer un compte",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "signIn": "Se connecter"
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié ?",
+      "subtitle": "Entrez votre e-mail et nous vous enverrons un lien de réinitialisation",
+      "submit": "Envoyer le lien",
+      "backToLogin": "Retour à la connexion"
+    }
+  },
+  "account": {
+    "title": "Paramètres du compte",
+    "profile": {
+      "title": "Profil",
+      "name": "Nom",
+      "email": "E-mail",
+      "save": "Enregistrer les modifications"
+    },
+    "security": {
+      "title": "Sécurité",
+      "changePassword": "Changer le mot de passe",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le nouveau mot de passe",
+      "twoFactor": "Authentification à deux facteurs",
+      "enable2FA": "Activer 2FA",
+      "disable2FA": "Désactiver 2FA"
+    },
+    "billing": {
+      "title": "Facturation",
+      "currentPlan": "Plan actuel",
+      "credits": "Crédits",
+      "nextBilling": "Prochaine facturation",
+      "managePlan": "Gérer le plan",
+      "viewHistory": "Voir l'historique"
+    }
+  },
+  "videos": {
+    "title": "Mes vidéos",
+    "empty": "Pas encore de vidéos",
+    "emptyDescription": "Commencez à créer des vidéos IA incroyables",
+    "createFirst": "Créer votre première vidéo",
+    "status": {
+      "pending": "En attente",
+      "processing": "En cours",
+      "completed": "Terminé",
+      "failed": "Échoué"
+    },
+    "actions": {
+      "download": "Télécharger",
+      "share": "Partager",
+      "delete": "Supprimer"
+    }
+  },
+  "errors": {
+    "generic": "Une erreur s'est produite. Veuillez réessayer.",
+    "unauthorized": "Veuillez vous connecter pour continuer",
+    "notFound": "Non trouvé",
+    "insufficientCredits": "Crédits insuffisants",
+    "rateLimited": "Trop de requêtes. Veuillez ralentir.",
+    "contentBlocked": "Le contenu viole nos conditions d'utilisation"
+  }
+}

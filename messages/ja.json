@@ -1,0 +1,243 @@
+{
+  "common": {
+    "appName": "Seedance AI",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "success": "成功",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "close": "閉じる",
+    "back": "戻る",
+    "next": "次へ",
+    "submit": "送信",
+    "search": "検索",
+    "filter": "フィルター",
+    "all": "すべて",
+    "none": "なし",
+    "yes": "はい",
+    "no": "いいえ"
+  },
+  "nav": {
+    "home": "ホーム",
+    "create": "作成",
+    "tryIt": "Seedanceを試す",
+    "videoAI": "動画AI",
+    "imageAI": "画像AI",
+    "aiTools": "AIツール",
+    "pricing": "料金",
+    "signIn": "ログイン",
+    "signOut": "ログアウト",
+    "account": "アカウント",
+    "billing": "請求",
+    "myCreations": "マイ作品"
+  },
+  "home": {
+    "hero": {
+      "title": "アイデアを映画のような動画に変換",
+      "subtitle": "最先端のAIモデルでテキストや画像から驚くべきAI生成動画を作成",
+      "cta": "作成を開始",
+      "secondaryCta": "デモを見る"
+    },
+    "features": {
+      "title": "パワフルなAI動画生成",
+      "textToVideo": {
+        "title": "テキストから動画",
+        "description": "テキストプロンプトだけでアイデアを素晴らしい動画に変換"
+      },
+      "imageToVideo": {
+        "title": "画像から動画",
+        "description": "画像に滑らかで映画のような動きを与える"
+      },
+      "multipleModels": {
+        "title": "複数のAIモデル",
+        "description": "Seedance 2.0、Sora 2、Veo 3などから選択"
+      }
+    }
+  },
+  "create": {
+    "title": "動画を作成",
+    "textToVideo": "テキストから動画",
+    "imageToVideo": "画像から動画",
+    "videoToVideo": "動画から動画",
+    "videoEffects": "動画エフェクト",
+    "textToImage": "テキストから画像",
+    "aiImageGenerator": "AI画像生成",
+    "imageToImageAI": "画像から画像AI",
+    "prompt": {
+      "label": "プロンプト",
+      "placeholder": "作成したい動画を説明してください...",
+      "required": "プロンプト（必須）"
+    },
+    "model": {
+      "label": "モデル",
+      "select": "モデルを選択"
+    },
+    "duration": {
+      "label": "長さ",
+      "seconds": "秒"
+    },
+    "resolution": {
+      "label": "解像度"
+    },
+    "aspectRatio": {
+      "label": "アスペクト比"
+    },
+    "generate": "動画を生成",
+    "generating": "生成中...",
+    "uploadImage": "画像をアップロード",
+    "dropImage": "ここに画像をドロップまたはクリックしてアップロード",
+    "sampleVideo": "サンプル動画",
+    "previewHere": "プレビューがここに表示されます",
+    "createdResults": "生成された動画がここに表示されます",
+    "features": "機能",
+    "tips": "より良い結果のためのヒント",
+    "upgradeNow": "今すぐアップグレード"
+  },
+  "sidebar": {
+    "videoAI": "動画AI",
+    "imageAI": "画像AI",
+    "tools": "ツール",
+    "aiModels": "AIモデル",
+    "myCreations": "マイ作品",
+    "communityShowcase": "コミュニティショーケース",
+    "promptGenerator": "プロンプト生成",
+    "videoEditor": "動画編集",
+    "moreModels": "その他のAIモデル"
+  },
+  "pricing": {
+    "title": "シンプルで透明な料金",
+    "subtitle": "あなたに最適なプランを選択",
+    "monthly": "月額",
+    "yearly": "年額",
+    "save": "{percent}%お得",
+    "free": {
+      "name": "無料",
+      "price": "$0",
+      "description": "お試しに最適",
+      "features": [
+        "100クレジット/月",
+        "720p解像度",
+        "基本AIモデル",
+        "標準キュー"
+      ]
+    },
+    "basic": {
+      "name": "ベーシック",
+      "description": "カジュアルクリエイター向け",
+      "features": [
+        "500クレジット/月",
+        "1080p解像度",
+        "全AIモデル",
+        "優先キュー"
+      ]
+    },
+    "pro": {
+      "name": "プロ",
+      "description": "プロフェッショナル向け",
+      "features": [
+        "2,000クレジット/月",
+        "4K解像度",
+        "全AIモデル",
+        "高優先キュー",
+        "APIアクセス"
+      ]
+    },
+    "max": {
+      "name": "マックス",
+      "description": "パワーユーザー向け",
+      "features": [
+        "10,000クレジット/月",
+        "無制限解像度",
+        "全AIモデル",
+        "最速キュー",
+        "APIアクセス",
+        "優先サポート"
+      ]
+    },
+    "cta": "始める",
+    "currentPlan": "現在のプラン"
+  },
+  "auth": {
+    "signIn": {
+      "title": "おかえりなさい",
+      "subtitle": "アカウントにログイン",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "submit": "ログイン",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "signUp": "登録"
+    },
+    "signUp": {
+      "title": "アカウントを作成",
+      "subtitle": "AI動画の旅を始めよう",
+      "name": "名前",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "confirmPassword": "パスワード確認",
+      "submit": "アカウントを作成",
+      "hasAccount": "すでにアカウントをお持ちですか？",
+      "signIn": "ログイン"
+    },
+    "forgotPassword": {
+      "title": "パスワードをお忘れですか？",
+      "subtitle": "メールアドレスを入力するとリセットリンクを送信します",
+      "submit": "リセットリンクを送信",
+      "backToLogin": "ログインに戻る"
+    }
+  },
+  "account": {
+    "title": "アカウント設定",
+    "profile": {
+      "title": "プロフィール",
+      "name": "名前",
+      "email": "メールアドレス",
+      "save": "変更を保存"
+    },
+    "security": {
+      "title": "セキュリティ",
+      "changePassword": "パスワードを変更",
+      "currentPassword": "現在のパスワード",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "新しいパスワードを確認",
+      "twoFactor": "二要素認証",
+      "enable2FA": "2FAを有効にする",
+      "disable2FA": "2FAを無効にする"
+    },
+    "billing": {
+      "title": "請求",
+      "currentPlan": "現在のプラン",
+      "credits": "クレジット",
+      "nextBilling": "次回請求",
+      "managePlan": "プランを管理",
+      "viewHistory": "履歴を表示"
+    }
+  },
+  "videos": {
+    "title": "マイ動画",
+    "empty": "まだ動画がありません",
+    "emptyDescription": "素晴らしいAI動画を作成しましょう",
+    "createFirst": "最初の動画を作成",
+    "status": {
+      "pending": "保留中",
+      "processing": "処理中",
+      "completed": "完了",
+      "failed": "失敗"
+    },
+    "actions": {
+      "download": "ダウンロード",
+      "share": "共有",
+      "delete": "削除"
+    }
+  },
+  "errors": {
+    "generic": "問題が発生しました。もう一度お試しください。",
+    "unauthorized": "続行するにはログインしてください",
+    "notFound": "見つかりません",
+    "insufficientCredits": "クレジットが不足しています",
+    "rateLimited": "リクエストが多すぎます。しばらくお待ちください。",
+    "contentBlocked": "コンテンツが利用規約に違反しています"
+  }
+}

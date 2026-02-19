@@ -2,43 +2,44 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import {
   Video, Image, Wand2, Layers, FolderOpen,
   ChevronLeft, Sparkles, TrendingUp, Scissors,
   PenTool, Zap, Film, Globe
 } from 'lucide-react'
 
-const menuItems = [
+const getMenuItems = (t: (key: string) => string, tc: (key: string) => string) => [
   {
-    category: 'Video AI',
+    category: t('videoAI'),
     items: [
-      { name: 'Text to Video', href: '/create/text-to-video', icon: Video },
-      { name: 'Image to Video', href: '/create/image-to-video', icon: Image },
-      { name: 'Video to Video', href: '/create/video-to-video', icon: Film, tag: 'New', tagColor: 'bg-blue-500' },
-      { name: 'Video Effects', href: '/create/video-effects', icon: Zap },
+      { name: tc('textToVideo'), href: '/create/text-to-video', icon: Video },
+      { name: tc('imageToVideo'), href: '/create/image-to-video', icon: Image },
+      { name: tc('videoToVideo'), href: '/create/video-to-video', icon: Film, tag: 'New', tagColor: 'bg-blue-500' },
+      { name: tc('videoEffects'), href: '/create/video-effects', icon: Zap },
     ],
   },
   {
-    category: 'Image AI',
+    category: t('imageAI'),
     items: [
-      { name: 'Text to Image', href: '/create/text-to-image', icon: Wand2, tag: 'New', tagColor: 'bg-purple-500' },
-      { name: 'AI Image Generator', href: '/create/ai-image', icon: Wand2 },
-      { name: 'Image to Image AI', href: '/create/image-to-image', icon: Image },
+      { name: tc('textToImage'), href: '/create/text-to-image', icon: Wand2, tag: 'New', tagColor: 'bg-purple-500' },
+      { name: tc('aiImageGenerator'), href: '/create/ai-image', icon: Wand2 },
+      { name: tc('imageToImageAI'), href: '/create/image-to-image', icon: Image },
     ],
   },
   {
-    category: 'Tools',
+    category: t('tools'),
     items: [
-      { name: 'Prompt Generator', href: '/tools/prompt-generator', icon: PenTool },
-      { name: 'Video Editor', href: '/tools/video-editor', icon: Scissors },
+      { name: t('promptGenerator'), href: '/tools/prompt-generator', icon: PenTool },
+      { name: t('videoEditor'), href: '/tools/video-editor', icon: Scissors },
     ],
   },
   {
-    category: 'AI Models',
+    category: t('aiModels'),
     items: [
       { name: 'Nano Banana Pro', href: '/create/nano-banana-pro', icon: Sparkles, tag: 'New', tagColor: 'bg-green-500' },
       { name: 'Wan 2.5', href: '/create/wan-2.5', icon: Video, tag: 'Audio', tagColor: 'bg-purple-500' },
-      { name: 'More AI Models', href: '/models', icon: Layers },
+      { name: t('moreModels'), href: '/models', icon: Layers },
     ],
   },
 ]
@@ -50,6 +51,9 @@ interface AppSidebarProps {
 
 export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
   const pathname = usePathname()
+  const t = useTranslations('sidebar')
+  const tc = useTranslations('create')
+  const menuItems = getMenuItems(t, tc)
 
   return (
     <aside className={`fixed left-0 top-[104px] h-[calc(100vh-104px)] bg-background border-r border-white/10 transition-all duration-300 z-40 ${
@@ -118,7 +122,7 @@ export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
               }`}
             >
               <FolderOpen className="w-4 h-4 mr-3" />
-              <span>My Creations</span>
+              <span>{t('myCreations')}</span>
             </Link>
           </div>
 
@@ -133,7 +137,7 @@ export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
               }`}
             >
               <Globe className="w-4 h-4 mr-3" />
-              <span>Community Showcase</span>
+              <span>{t('communityShowcase')}</span>
             </Link>
           </div>
         </nav>
@@ -145,7 +149,7 @@ export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
             className="flex items-center justify-center w-full px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-400 rounded-lg font-medium text-sm hover:from-green-600 hover:to-emerald-500 transition-all"
           >
             <TrendingUp className="w-4 h-4 mr-2" />
-            Upgrade Now
+            {tc('upgradeNow')}
           </Link>
         </div>
       </div>
