@@ -77,17 +77,37 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const userId = session.metadata?.userId
   if (!userId) {
     console.error('No userId in checkout session metadata')
-    return
+    throw new Error('No userId in checkout session metadata')
   }
 
   const subscriptionId = session.subscription as string
   const customerId = session.customer as string
 
+  console.log('Processing checkout for user:', userId, 'subscription:', subscriptionId)
+
   // Get subscription details from Stripe
   const stripeSubscription = await stripe.subscriptions.retrieve(subscriptionId)
   const priceId = stripeSubscription.items.data[0]?.price.id
-  const plan = getPlanByPriceId(priceId) || 'BASIC'
-  const planConfig = PLANS[plan]
+
+  console.log('Price ID from Stripe:', priceId)
+
+  const plan = getPlanByPriceId(priceId)
+  if (!plan) {
+    console.error('Could not find plan for priceId:', priceId)
+    console.error('Available price IDs:', {
+      BASIC_MONTHLY: process.env.STRIPE_PRICE_BASIC_MONTHLY,
+      BASIC_YEARLY: process.env.STRIPE_PRICE_BASIC_YEARLY,
+      PRO_MONTHLY: process.env.STRIPE_PRICE_PRO_MONTHLY,
+      PRO_YEARLY: process.env.STRIPE_PRICE_PRO_YEARLY,
+      MAX_MONTHLY: process.env.STRIPE_PRICE_MAX_MONTHLY,
+      MAX_YEARLY: process.env.STRIPE_PRICE_MAX_YEARLY,
+    })
+  }
+
+  const finalPlan = plan || 'BASIC'
+  const planConfig = PLANS[finalPlan]
+
+  console.log('Selected plan:', finalPlan, 'credits:', planConfig.credits)
 
   // Extract period data with type safety
   const subData = stripeSubscription as unknown as { current_period_start: number; current_period_end: number }
@@ -96,7 +116,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     where: { userId },
     create: {
       userId,
-      plan,
+      plan: finalPlan,
       status: 'ACTIVE',
       credits: planConfig.credits,
       monthlyCredits: planConfig.credits,
@@ -107,7 +127,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       currentPeriodEnd: new Date(subData.current_period_end * 1000),
     },
     update: {
-      plan,
+      plan: finalPlan,
       status: 'ACTIVE',
       credits: planConfig.credits,
       monthlyCredits: planConfig.credits,
@@ -121,7 +141,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     },
   })
 
-  console.log(`Subscription activated for user ${userId}: ${plan}`)
+  console.log(`Subscription activated for user ${userId}: ${finalPlan}`)
 }
 
 async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
