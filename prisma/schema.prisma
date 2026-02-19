@@ -1,0 +1,366 @@
+// Seedance Clone - Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== 用户系统 ====================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  avatar        String?
+  emailVerified DateTime?
+
+  // 认证
+  passwordHash  String?
+  provider      String    @default("credentials") // credentials | google
+  providerId    String?
+
+  // 邮箱验证
+  verifyToken       String?
+  verifyTokenExpiry DateTime?
+
+  // 密码重置
+  resetToken        String?
+  resetTokenExpiry  DateTime?
+
+  // 双因素认证
+  twoFactorEnabled  Boolean   @default(false)
+  twoFactorSecret   String?
+
+  // 角色
+  role              String    @default("user") // user | admin
+
+  // 关系
+  accounts      Account[]
+  sessions      Session[]
+  subscription  Subscription?
+  videos        Video[]
+  images        Image[]
+  dailyUsage    DailyUsage[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([email])
+  @@index([role])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ==================== 订阅系统 ====================
+
+enum Plan {
+  FREE
+  BASIC
+  PRO
+  MAX
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELED
+  PAST_DUE
+  PAUSED
+  TRIALING
+}
+
+model Subscription {
+  id                   String             @id @default(cuid())
+  userId               String             @unique
+  user                 User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  plan                 Plan               @default(FREE)
+  status               SubscriptionStatus @default(ACTIVE)
+
+  // 积分系统
+  credits              Int                @default(100) // 当前积分余额
+  monthlyCredits       Int                @default(100) // 每月配额
+  creditsResetAt       DateTime?          // 积分重置时间
+
+  // Stripe
+  stripeCustomerId     String?
+  stripeSubscriptionId String?            @unique
+  stripePriceId        String?
+
+  // Paddle (legacy)
+  paddleCustomerId     String?
+  paddleSubscriptionId String?            @unique
+  paddlePriceId        String?
+
+  // Creem (legacy)
+  creemCustomerId      String?
+  creemSubscriptionId  String?            @unique
+
+  // 周期
+  currentPeriodStart   DateTime?
+  currentPeriodEnd     DateTime?
+  cancelAtPeriodEnd    Boolean            @default(false)
+  canceledAt           DateTime?
+
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+
+  @@index([userId])
+  @@index([stripeSubscriptionId])
+  @@index([paddleSubscriptionId])
+  @@index([creemSubscriptionId])
+}
+
+// ==================== 配额系统 ====================
+
+model DailyUsage {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  date      DateTime
+  count     Int      @default(0)
+  duration  Int      @default(0) // 总秒数
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, date])
+  @@index([userId, date])
+}
+
+// ==================== 视频系统 ====================
+
+enum VideoStatus {
+  PENDING       // 等待处理
+  UPLOADING     // 上传素材中
+  QUEUED        // 排队中
+  PROCESSING    // AI 生成中
+  COMPLETED     // 完成
+  FAILED        // 失败
+  ARCHIVED      // 已归档
+}
+
+enum GenerationType {
+  TEXT_TO_VIDEO
+  IMAGE_TO_VIDEO
+  VIDEO_TO_VIDEO
+  TEXT_TO_IMAGE
+  VIDEO_EFFECTS
+}
+
+model Video {
+  id              String          @id @default(cuid())
+  userId          String
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // 基本信息
+  title           String
+  description     String?
+  prompt          String
+
+  // 生成配置
+  generationType  GenerationType
+  aiModel         String          @default("seedance-1.5-pro") // AI 模型
+  style           String?         // cinematic, anime, realistic, etc.
+  duration        Int             @default(5) // 秒
+  resolution      String          @default("720p") // 480p, 720p, 1080p
+  aspectRatio     String          @default("16:9") // 16:9, 9:16, 1:1
+  fps             Int             @default(24)
+  seed            Int?            // AI 随机种子
+  creditsUsed     Int             @default(0) // 消耗的积分
+
+  // 状态
+  status          VideoStatus     @default(PENDING)
+  progress        Int             @default(0) // 0-100
+  errorMessage    String?
+
+  // 文件
+  sourceImageKey  String?         // R2 key (图像转视频)
+  sourceVideoKey  String?         // R2 key (视频转视频)
+  outputVideoKey  String?         // R2 key (输出视频)
+  outputImageKey  String?         // R2 key (输出图像)
+  thumbnailKey    String?         // R2 key (缩略图)
+
+  // AI 任务
+  aiTaskId        String?         // AI 提供商的任务 ID
+  aiProvider      String?         // replicate, runway, pika
+
+  // 元数据
+  width           Int?
+  height          Int?
+  fileSize        Int?            // bytes
+
+  // 分享
+  isPublic        Boolean         @default(false)
+  shareToken      String?         @unique
+  views           Int             @default(0)
+
+  // 软删除
+  deletedAt       DateTime?
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  completedAt     DateTime?
+
+  // 社区功能
+  likes           Like[]
+  comments        Comment[]
+  featured        Boolean         @default(false) // 精选作品
+
+  @@index([userId, createdAt])
+  @@index([userId, status])
+  @@index([shareToken])
+  @@index([isPublic, featured])
+}
+
+// ==================== 图像系统 ====================
+
+model Image {
+  id              String          @id @default(cuid())
+  userId          String
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // 基本信息
+  title           String
+  prompt          String
+
+  // 生成配置
+  aiModel         String          @default("sdxl") // sdxl, dalle-3, flux, etc.
+  style           String?
+  negativePrompt  String?
+  width           Int             @default(1024)
+  height          Int             @default(1024)
+  seed            Int?
+  creditsUsed     Int             @default(0)
+
+  // 状态
+  status          VideoStatus     @default(PENDING)
+  progress        Int             @default(0)
+  errorMessage    String?
+
+  // 文件
+  outputImageKey  String?
+  thumbnailKey    String?
+
+  // AI 任务
+  aiTaskId        String?
+  aiProvider      String?
+
+  // 分享
+  isPublic        Boolean         @default(false)
+  shareToken      String?         @unique
+  views           Int             @default(0)
+
+  // 社区
+  likes           ImageLike[]
+  comments        ImageComment[]
+  featured        Boolean         @default(false)
+
+  // 软删除
+  deletedAt       DateTime?
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@index([userId, createdAt])
+  @@index([isPublic, featured])
+}
+
+// ==================== 社区系统 ====================
+
+model Like {
+  id        String   @id @default(cuid())
+  userId    String
+  videoId   String
+  video     Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, videoId])
+  @@index([videoId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  userId    String
+  videoId   String
+  video     Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  content   String
+
+  // 回复
+  parentId  String?
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[] @relation("CommentReplies")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([videoId, createdAt])
+}
+
+model ImageLike {
+  id        String   @id @default(cuid())
+  userId    String
+  imageId   String
+  image     Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, imageId])
+  @@index([imageId])
+}
+
+model ImageComment {
+  id        String   @id @default(cuid())
+  userId    String
+  imageId   String
+  image     Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
+
+  content   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([imageId, createdAt])
+}
