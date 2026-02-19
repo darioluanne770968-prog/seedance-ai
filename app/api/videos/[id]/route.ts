@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 // GET - Get video details
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth()
@@ -13,9 +13,11 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const { id } = await params
+
     const video = await prisma.video.findUnique({
       where: {
-        id: params.id,
+        id,
         userId: session.user.id,
         deletedAt: null,
       },
@@ -38,7 +40,7 @@ export async function GET(
 // DELETE - Soft delete video
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth()
@@ -46,9 +48,11 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const { id } = await params
+
     const video = await prisma.video.findUnique({
       where: {
-        id: params.id,
+        id,
         userId: session.user.id,
         deletedAt: null,
       },
@@ -60,7 +64,7 @@ export async function DELETE(
 
     // Soft delete
     await prisma.video.update({
-      where: { id: params.id },
+      where: { id },
       data: { deletedAt: new Date() },
     })
 
@@ -77,7 +81,7 @@ export async function DELETE(
 // PATCH - Update video metadata
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth()
@@ -85,12 +89,13 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const { id } = await params
     const body = await req.json()
     const { title, isPublic } = body
 
     const video = await prisma.video.findUnique({
       where: {
-        id: params.id,
+        id,
         userId: session.user.id,
         deletedAt: null,
       },
@@ -101,7 +106,7 @@ export async function PATCH(
     }
 
     const updatedVideo = await prisma.video.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...(title && { title }),
         ...(typeof isPublic === 'boolean' && { isPublic }),
