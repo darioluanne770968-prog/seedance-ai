@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { Video, Image, Wand2, Sparkles, Zap, Music } from 'lucide-react'
 
 const videoModels = [
@@ -69,51 +72,53 @@ const videoModels = [
   },
 ]
 
-const quickActions = [
-  {
-    name: 'Text to Video',
-    description: 'Generate videos from text descriptions',
-    href: '/create/text-to-video',
-    icon: Video,
-    gradient: 'from-purple-500 to-pink-500',
-  },
-  {
-    name: 'Image to Video',
-    description: 'Bring your images to life with AI',
-    href: '/create/image-to-video',
-    icon: Image,
-    gradient: 'from-pink-500 to-orange-500',
-  },
-  {
-    name: 'AI Image Generator',
-    description: 'Create stunning images with AI',
-    href: '/create/ai-image',
-    icon: Wand2,
-    gradient: 'from-blue-500 to-purple-500',
-  },
-]
-
 export default function CreatePage() {
+  const t = useTranslations('create')
+
+  const quickActions = [
+    {
+      nameKey: 'textToVideo',
+      descKey: 'textToVideoDesc',
+      href: '/create/text-to-video',
+      icon: Video,
+      gradient: 'from-purple-500 to-pink-500',
+    },
+    {
+      nameKey: 'imageToVideo',
+      descKey: 'imageToVideoDesc',
+      href: '/create/image-to-video',
+      icon: Image,
+      gradient: 'from-pink-500 to-orange-500',
+    },
+    {
+      nameKey: 'aiImageGenerator',
+      descKey: 'aiImageGeneratorDesc',
+      href: '/create/ai-image',
+      icon: Wand2,
+      gradient: 'from-blue-500 to-purple-500',
+    },
+  ]
+
   return (
     <div className="p-6 lg:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Create with AI</h1>
+          <h1 className="text-3xl font-bold mb-2">{t('pageTitle')}</h1>
           <p className="text-muted-foreground">
-            Choose a model or tool to start creating
+            {t('pageSubtitle')}
           </p>
         </div>
 
         {/* Quick Actions */}
         <div className="mb-10">
-          <h2 className="text-lg font-semibold mb-4">Quick Start</h2>
+          <h2 className="text-lg font-semibold mb-4">{t('quickStart')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {quickActions.map((action) => {
               const Icon = action.icon
               return (
                 <Link
-                  key={action.name}
+                  key={action.nameKey}
                   href={action.href}
                   className="group p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all"
                 >
@@ -121,10 +126,10 @@ export default function CreatePage() {
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-semibold mb-1 group-hover:text-white transition-colors">
-                    {action.name}
+                    {t(action.nameKey)}
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    {action.description}
+                    {t(action.descKey)}
                   </p>
                 </Link>
               )
@@ -134,7 +139,7 @@ export default function CreatePage() {
 
         {/* Video AI Models */}
         <div className="mb-10">
-          <h2 className="text-lg font-semibold mb-4">Video AI Models</h2>
+          <h2 className="text-lg font-semibold mb-4">{t('videoAIModels')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {videoModels.map((model) => {
               const Icon = model.icon
@@ -159,14 +164,14 @@ export default function CreatePage() {
                       <h3 className="font-semibold mb-1 group-hover:text-white transition-colors">
                         {model.name}
                         {model.comingSoon && (
-                          <span className="ml-2 text-xs text-muted-foreground">(Coming Soon)</span>
+                          <span className="ml-2 text-xs text-muted-foreground">({t('comingSoon')})</span>
                         )}
                       </h3>
                       <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
                         {model.description}
                       </p>
                       <div className="flex items-center text-xs">
-                        <span className="text-yellow-400 font-medium">{model.credits} credits</span>
+                        <span className="text-yellow-400 font-medium">{model.credits} {t('credits')}</span>
                       </div>
                     </div>
                   </div>
@@ -178,23 +183,23 @@ export default function CreatePage() {
 
         {/* Pro Tips */}
         <div className="p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10 rounded-xl">
-          <h3 className="font-semibold mb-3">Pro Tips</h3>
+          <h3 className="font-semibold mb-3">{t('proTips')}</h3>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-muted-foreground">
             <li className="flex items-start">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 mt-2"></span>
-              <span>Use detailed prompts for better results</span>
+              <span>{t('tip1')}</span>
             </li>
             <li className="flex items-start">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 mt-2"></span>
-              <span>Start with lower resolution to test ideas</span>
+              <span>{t('tip2')}</span>
             </li>
             <li className="flex items-start">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 mt-2"></span>
-              <span>Different models excel at different styles</span>
+              <span>{t('tip3')}</span>
             </li>
             <li className="flex items-start">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 mt-2"></span>
-              <span>Use Wan 2.5 for videos with audio</span>
+              <span>{t('tip4')}</span>
             </li>
           </ul>
         </div>
