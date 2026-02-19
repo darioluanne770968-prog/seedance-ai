@@ -1,6 +1,16 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null
+
+function getResendClient() {
+  if (!resend) {
+    throw new Error('RESEND_API_KEY is not set')
+  }
+
+  return resend
+}
 
 const FROM_EMAIL = process.env.FROM_EMAIL || 'Seedance <noreply@seedance.ai>'
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Seedance'
@@ -16,7 +26,7 @@ export interface EmailTemplate {
 export async function sendVerificationEmail(email: string, token: string) {
   const verifyUrl = `${APP_URL}/verify-email?token=${token}`
 
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM_EMAIL,
     to: email,
     subject: `Verify your ${APP_NAME} account`,
@@ -69,7 +79,7 @@ export async function sendVerificationEmail(email: string, token: string) {
 export async function sendPasswordResetEmail(email: string, token: string) {
   const resetUrl = `${APP_URL}/reset-password?token=${token}`
 
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM_EMAIL,
     to: email,
     subject: `Reset your ${APP_NAME} password`,
@@ -122,7 +132,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
 export async function sendVideoCompleteEmail(email: string, videoTitle: string, videoUrl: string, thumbnailUrl?: string) {
   const viewUrl = `${APP_URL}/videos`
 
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM_EMAIL,
     to: email,
     subject: `Your video "${videoTitle}" is ready!`,
@@ -180,7 +190,7 @@ export async function sendVideoCompleteEmail(email: string, videoTitle: string, 
 export async function sendVideoFailedEmail(email: string, videoTitle: string, reason?: string) {
   const createUrl = `${APP_URL}/create`
 
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM_EMAIL,
     to: email,
     subject: `Video generation failed: ${videoTitle}`,
@@ -238,7 +248,7 @@ export async function sendVideoFailedEmail(email: string, videoTitle: string, re
 export async function sendWelcomeEmail(email: string, name?: string) {
   const createUrl = `${APP_URL}/create`
 
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM_EMAIL,
     to: email,
     subject: `Welcome to ${APP_NAME}!`,
@@ -301,7 +311,7 @@ export async function sendPaymentConfirmationEmail(
 ) {
   const billingUrl = `${APP_URL}/account/billing`
 
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM_EMAIL,
     to: email,
     subject: `Payment confirmed - ${APP_NAME} ${plan}`,

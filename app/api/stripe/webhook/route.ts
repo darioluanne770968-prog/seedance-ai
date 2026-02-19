@@ -191,8 +191,15 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
   })
 }
 
+function getInvoiceSubscriptionId(invoice: Stripe.Invoice): string | null {
+  const subscription = invoice.parent?.subscription_details?.subscription
+  if (!subscription) return null
+
+  return typeof subscription === 'string' ? subscription : subscription.id
+}
+
 async function handleInvoicePaid(invoice: Stripe.Invoice) {
-  const subscriptionId = invoice.subscription as string
+  const subscriptionId = getInvoiceSubscriptionId(invoice)
   if (!subscriptionId) return
 
   const subscription = await prisma.subscription.findFirst({
@@ -215,7 +222,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
 }
 
 async function handleInvoiceFailed(invoice: Stripe.Invoice) {
-  const subscriptionId = invoice.subscription as string
+  const subscriptionId = getInvoiceSubscriptionId(invoice)
   if (!subscriptionId) return
 
   await prisma.subscription.updateMany({

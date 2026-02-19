@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { SessionProvider } from 'next-auth/react'
 import { Navbar } from './Navbar'
 import { AppSidebar } from './AppSidebar'
 
@@ -13,30 +12,28 @@ export function AppLayoutClient({ children }: AppLayoutClientProps) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
 
   return (
-    <SessionProvider>
-      <div className="min-h-screen bg-background">
-        {/* Top Navigation */}
-        <Navbar />
+    <div className="min-h-screen bg-background">
+      {/* Top Navigation */}
+      <Navbar />
 
-        {/* Main Content Area */}
-        <div className="flex">
-          {/* Left Sidebar */}
-          <AppSidebar
-            collapsed={sidebarCollapsed}
-            onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
-          />
+      {/* Main Content Area */}
+      <div className="flex">
+        {/* Left Sidebar */}
+        <AppSidebar
+          collapsed={sidebarCollapsed}
+          onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        />
 
-          {/* Content */}
-          <main
-            className={`flex-1 transition-all duration-300 ${
-              sidebarCollapsed ? 'ml-0' : 'ml-64'
-            }`}
-            style={{ marginTop: '104px' }}
-          >
-            {children}
-          </main>
-        </div>
+        {/* Content */}
+        <main
+          className={`flex-1 transition-all duration-300 ${
+            sidebarCollapsed ? 'ml-0' : 'ml-64'
+          }`}
+          style={{ marginTop: '104px' }}
+        >
+          {children}
+        </main>
       </div>
-    </SessionProvider>
+    </div>
   )
 }

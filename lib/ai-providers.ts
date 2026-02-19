@@ -314,7 +314,9 @@ export async function getPredictionStatus(
       videoUrl: Array.isArray(prediction.output)
         ? prediction.output[0]
         : prediction.output,
-      error: prediction.error,
+      error: typeof prediction.error === 'string'
+        ? prediction.error
+        : undefined,
     }
   } catch (error) {
     console.error('Get prediction status error:', error)

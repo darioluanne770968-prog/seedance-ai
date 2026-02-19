@@ -26,7 +26,6 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: '50mb',
     },
-    instrumentationHook: true,
   },
 }
 
@@ -47,9 +46,6 @@ export default sentryEnabled
 
       // Automatically tree-shake Sentry logger statements
       disableLogger: true,
-
-      // Hide source maps from browser devtools
-      hideSourceMaps: true,
 
       // Automatically annotate React components
       reactComponentAnnotation: {

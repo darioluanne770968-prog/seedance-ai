@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Check, Sparkles, Zap, Crown, Loader2 } from 'lucide-react'
@@ -76,7 +76,7 @@ const plans = [
   },
 ]
 
-export default function PricingPage() {
+function PricingContent() {
   const { data: session } = useSession()
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -301,5 +301,17 @@ export default function PricingPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function PricingPage() {
+  return (
+    <Suspense fallback={
+      <div className="py-16 px-4 flex justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+      </div>
+    }>
+      <PricingContent />
+    </Suspense>
   )
 }
