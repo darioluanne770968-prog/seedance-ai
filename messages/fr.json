@@ -64,6 +64,7 @@
     "videoAIModels": "Modèles vidéo IA",
     "comingSoon": "Bientôt disponible",
     "credits": "crédits",
+    "creditsRequired": "Crédits requis :",
     "proTips": "Conseils Pro",
     "tip1": "Utilisez des prompts détaillés pour de meilleurs résultats",
     "tip2": "Commencez avec une résolution basse pour tester",
@@ -71,8 +72,10 @@
     "tip4": "Utilisez Wan 2.5 pour les vidéos avec audio",
     "textToVideo": "Texte vers vidéo",
     "textToVideoDesc": "Générer des vidéos à partir de descriptions",
+    "textToVideoFullDesc": "Générez de superbes vidéos IA à partir de descriptions textuelles",
     "imageToVideo": "Image vers vidéo",
     "imageToVideoDesc": "Donnez vie à vos images avec l'IA",
+    "imageToVideoFullDesc": "Donnez vie à vos images avec l'animation IA",
     "videoToVideo": "Vidéo vers vidéo",
     "videoEffects": "Effets vidéo",
     "textToImage": "Texte vers image",
@@ -82,7 +85,10 @@
     "prompt": {
       "label": "Prompt",
       "placeholder": "Décrivez la vidéo que vous voulez créer...",
-      "required": "Prompt (Requis)"
+      "required": "Prompt (Requis)",
+      "motionOptional": "Prompt de mouvement (Optionnel)",
+      "motionHint": "Laissez vide pour une animation automatique",
+      "motionPlaceholder": "Décrivez comment vous voulez animer l'image... (ex: 'La caméra zoome lentement, les feuilles ondulent dans le vent')"
     },
     "model": {
       "label": "Modèle IA",
@@ -100,14 +106,111 @@
     },
     "generate": "Générer la vidéo",
     "generating": "Génération en cours...",
+    "creating": "Création en cours...",
+    "create": "Créer",
     "uploadImage": "Télécharger une image",
+    "uploadImageRequired": "Télécharger une image",
     "dropImage": "Déposez l'image ici ou cliquez pour télécharger",
     "sampleVideo": "Exemple de vidéo",
     "previewHere": "L'aperçu apparaîtra ici",
     "createdResults": "Les vidéos créées apparaîtront ici",
     "features": "Fonctionnalités",
     "tips": "Conseils pour de meilleurs résultats",
-    "upgradeNow": "Mettre à niveau"
+    "upgradeNow": "Mettre à niveau",
+    "textToVideoTips": {
+      "tip1": "Soyez spécifique et descriptif dans vos prompts",
+      "tip2": "Incluez des détails sur l'éclairage, les angles de caméra et le mouvement",
+      "tip3": "Une résolution plus élevée utilise plus de crédits",
+      "tip4": "Les vidéos plus longues offrent des transitions plus fluides"
+    },
+    "imageToVideoTips": {
+      "tip1": "Utilisez des images de haute qualité avec des sujets clairs",
+      "tip2": "Décrivez le mouvement que vous voulez dans le prompt",
+      "tip3": "Évitez les scènes trop complexes",
+      "tip4": "Meilleurs résultats avec portraits ou paysages"
+    },
+    "models": {
+      "seedance2": {
+        "description": "Notre modèle vidéo IA de nouvelle génération (Bientôt)",
+        "feature1": "Qualité vidéo de nouvelle génération",
+        "feature2": "Cohérence de mouvement améliorée",
+        "feature3": "Support vidéo jusqu'à 30 secondes",
+        "feature4": "Transfert de style avancé",
+        "feature5": "Aperçu en temps réel (bientôt)",
+        "tip1": "Seedance 2.0 est actuellement en aperçu",
+        "tip2": "Utilisez Seedance 1.5 Pro en attendant",
+        "tip3": "Restez à l'écoute pour la sortie complète",
+        "tip4": "Fonctionnalités premium bientôt disponibles"
+      },
+      "seedance15pro": {
+        "description": "Créez des vidéos IA professionnelles avec notre modèle phare",
+        "feature1": "Génération vidéo haute qualité jusqu'à 1080p",
+        "feature2": "Mouvement naturel et animations fluides",
+        "feature3": "Excellente compréhension des prompts",
+        "feature4": "Vitesse de génération rapide",
+        "feature5": "Supporte texte et images en entrée"
+      },
+      "sora2": {
+        "description": "Le modèle de génération vidéo le plus avancé d'OpenAI",
+        "feature1": "Qualité vidéo à la pointe",
+        "feature2": "Compréhension de scènes complexes",
+        "feature3": "Simulation physique réaliste",
+        "feature4": "Sujets multiples et interactions",
+        "feature5": "Support de durée étendue",
+        "tip1": "Décrivez des scènes détaillées avec plusieurs éléments",
+        "tip2": "Incluez des interactions physiques pour des résultats réalistes",
+        "tip3": "Spécifiez les mouvements de caméra pour des effets cinématographiques",
+        "tip4": "Utilisez des durées plus longues pour des récits complexes"
+      },
+      "veo3": {
+        "description": "L'IA de génération vidéo puissante de Google",
+        "feature1": "Génération vidéo photoréaliste",
+        "feature2": "Cohérence temporelle avancée",
+        "feature3": "Capacités de styles diverses",
+        "feature4": "Optimisé pour le contenu long",
+        "feature5": "Excellente précision des couleurs",
+        "tip1": "Idéal pour les vidéos réalistes et style documentaire",
+        "tip2": "Excelle dans les paysages naturels et environnements",
+        "tip3": "Incluez des détails d'éclairage pour les meilleurs résultats",
+        "tip4": "Fonctionne bien avec des descriptions atmosphériques"
+      },
+      "wan25": {
+        "description": "Génération vidéo avec audio synchronisé",
+        "feature1": "Génération audio intégrée",
+        "feature2": "Effets sonores synchronisés",
+        "feature3": "Support de musique de fond",
+        "feature4": "Capacités de voix off",
+        "feature5": "Support audio multilingue",
+        "tip1": "Décrivez les sons et la musique dans votre prompt",
+        "tip2": "Spécifiez l'audio ambiant pour plus d'immersion",
+        "tip3": "Incluez des descriptions de dialogue pour la génération vocale",
+        "tip4": "Idéal pour les vidéos nécessitant des effets sonores"
+      },
+      "klingai": {
+        "description": "Génération vidéo rapide et efficace",
+        "feature1": "Génération vidéo rapide",
+        "feature2": "Traitement rentable",
+        "feature3": "Bon pour les itérations rapides",
+        "feature4": "Sortie de style cohérente",
+        "feature5": "Optimisé pour les formats réseaux sociaux",
+        "tip1": "Idéal pour les prototypes et brouillons rapides",
+        "tip2": "Fonctionne bien avec des prompts simples et clairs",
+        "tip3": "Parfait pour le contenu réseaux sociaux",
+        "tip4": "Bon équilibre entre vitesse et qualité"
+      },
+      "hailuoai": {
+        "description": "Génération vidéo IA abordable pour tous",
+        "feature1": "Option la plus abordable",
+        "feature2": "Bonne qualité pour le prix",
+        "feature3": "Temps de traitement rapide",
+        "feature4": "Facile à utiliser",
+        "feature5": "Idéal pour les débutants",
+        "tip1": "Parfait pour l'apprentissage et l'expérimentation",
+        "tip2": "Utilisez des prompts clairs et simples",
+        "tip3": "Idéal pour les projets personnels",
+        "tip4": "Parfait pour essayer différentes idées rapidement"
+      }
+    }
   },
   "sidebar": {
     "videoAI": "VIDÉO IA",

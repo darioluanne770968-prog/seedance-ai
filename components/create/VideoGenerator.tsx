@@ -40,25 +40,46 @@ const DURATIONS = [
 
 interface VideoGeneratorProps {
   title: string
-  description: string
+  descriptionKey: string
   defaultModel: string
+  modelKey: string
   modelInfo?: {
     name: string
     tag?: string
-    features?: string[]
+    featureCount?: number
   }
-  tips?: string[]
+  tipCount?: number
 }
 
 export function VideoGenerator({
   title,
-  description,
+  descriptionKey,
   defaultModel,
+  modelKey,
   modelInfo,
-  tips,
+  tipCount = 0,
 }: VideoGeneratorProps) {
   const router = useRouter()
   const t = useTranslations('create')
+
+  // Get translated description
+  const description = t(`models.${modelKey}.description`)
+
+  // Build features array from translation keys
+  const features: string[] = []
+  if (modelInfo?.featureCount) {
+    for (let i = 1; i <= modelInfo.featureCount; i++) {
+      features.push(t(`models.${modelKey}.feature${i}`))
+    }
+  }
+
+  // Build tips array from translation keys
+  const tips: string[] = []
+  if (tipCount > 0) {
+    for (let i = 1; i <= tipCount; i++) {
+      tips.push(t(`models.${modelKey}.tip${i}`))
+    }
+  }
   const [mode, setMode] = useState<'text' | 'image'>('text')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -291,7 +312,7 @@ export function VideoGenerator({
 
             {/* Credits Required */}
             <div className="flex items-center justify-between py-3 px-4 bg-white/5 rounded-lg">
-              <span className="text-sm text-muted-foreground">Credits required:</span>
+              <span className="text-sm text-muted-foreground">{t('creditsRequired')}</span>
               <span className="font-semibold text-yellow-400">{creditsRequired}</span>
             </div>
 
@@ -359,11 +380,11 @@ export function VideoGenerator({
         </div>
 
         {/* Model Features */}
-        {modelInfo?.features && modelInfo.features.length > 0 && (
+        {features.length > 0 && (
           <div className="mt-6 p-4 bg-white/5 rounded-lg">
-            <h3 className="font-medium mb-2">{modelInfo.name} {t('features')}</h3>
+            <h3 className="font-medium mb-2">{modelInfo?.name} {t('features')}</h3>
             <ul className="text-xs text-muted-foreground space-y-2">
-              {modelInfo.features.map((feature, i) => (
+              {features.map((feature, i) => (
                 <li key={i}>• {feature}</li>
               ))}
             </ul>
@@ -371,7 +392,7 @@ export function VideoGenerator({
         )}
 
         {/* Tips */}
-        {tips && tips.length > 0 && (
+        {tips.length > 0 && (
           <div className="mt-6 p-4 bg-white/5 rounded-lg">
             <h3 className="font-medium mb-2">{t('tips')}</h3>
             <ul className="text-xs text-muted-foreground space-y-2">

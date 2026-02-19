@@ -64,6 +64,7 @@
     "videoAIModels": "Video-KI-Modelle",
     "comingSoon": "Demnächst",
     "credits": "Credits",
+    "creditsRequired": "Benötigte Credits:",
     "proTips": "Profi-Tipps",
     "tip1": "Detaillierte Prompts für bessere Ergebnisse",
     "tip2": "Testen Sie Ideen mit niedriger Auflösung",
@@ -71,8 +72,10 @@
     "tip4": "Wan 2.5 für Videos mit Audio verwenden",
     "textToVideo": "Text zu Video",
     "textToVideoDesc": "Videos aus Textbeschreibungen generieren",
+    "textToVideoFullDesc": "Erstellen Sie beeindruckende KI-Videos aus Textbeschreibungen",
     "imageToVideo": "Bild zu Video",
     "imageToVideoDesc": "Erwecken Sie Ihre Bilder mit KI zum Leben",
+    "imageToVideoFullDesc": "Erwecken Sie Ihre Bilder mit KI-Animation zum Leben",
     "videoToVideo": "Video zu Video",
     "videoEffects": "Video-Effekte",
     "textToImage": "Text zu Bild",
@@ -82,7 +85,10 @@
     "prompt": {
       "label": "Prompt",
       "placeholder": "Beschreiben Sie das Video, das Sie erstellen möchten...",
-      "required": "Prompt (Erforderlich)"
+      "required": "Prompt (Erforderlich)",
+      "motionOptional": "Bewegungs-Prompt (Optional)",
+      "motionHint": "Leer lassen für automatische Animation",
+      "motionPlaceholder": "Beschreiben Sie, wie das Bild animiert werden soll... (z.B. 'Kamera zoomt langsam, Blätter wiegen im Wind')"
     },
     "model": {
       "label": "KI-Modell",
@@ -100,14 +106,111 @@
     },
     "generate": "Video generieren",
     "generating": "Generierung...",
+    "creating": "Erstellen...",
+    "create": "Erstellen",
     "uploadImage": "Bild hochladen",
+    "uploadImageRequired": "Bild hochladen",
     "dropImage": "Bild hier ablegen oder zum Hochladen klicken",
     "sampleVideo": "Beispielvideo",
     "previewHere": "Vorschau wird hier angezeigt",
     "createdResults": "Erstellte Videos werden hier angezeigt",
     "features": "Funktionen",
     "tips": "Tipps für bessere Ergebnisse",
-    "upgradeNow": "Jetzt upgraden"
+    "upgradeNow": "Jetzt upgraden",
+    "textToVideoTips": {
+      "tip1": "Seien Sie spezifisch und detailliert in Ihren Prompts",
+      "tip2": "Fügen Sie Details zu Beleuchtung, Kamerawinkeln und Bewegung hinzu",
+      "tip3": "Höhere Auflösung verbraucht mehr Credits",
+      "tip4": "Längere Videos bieten flüssigere Übergänge"
+    },
+    "imageToVideoTips": {
+      "tip1": "Verwenden Sie hochwertige Bilder mit klaren Motiven",
+      "tip2": "Beschreiben Sie die gewünschte Bewegung im Prompt",
+      "tip3": "Vermeiden Sie zu komplexe Szenen",
+      "tip4": "Beste Ergebnisse mit Porträts oder Landschaften"
+    },
+    "models": {
+      "seedance2": {
+        "description": "Unser KI-Videomodell der nächsten Generation (Demnächst)",
+        "feature1": "Videoqualität der nächsten Generation",
+        "feature2": "Verbesserte Bewegungskohärenz",
+        "feature3": "Unterstützung für Videos bis zu 30 Sekunden",
+        "feature4": "Fortgeschrittener Stiltransfer",
+        "feature5": "Echtzeit-Vorschau (demnächst)",
+        "tip1": "Seedance 2.0 ist derzeit in der Vorschau",
+        "tip2": "Verwenden Sie in der Zwischenzeit Seedance 1.5 Pro",
+        "tip3": "Bleiben Sie dran für die vollständige Veröffentlichung",
+        "tip4": "Premium-Funktionen kommen bald"
+      },
+      "seedance15pro": {
+        "description": "Erstellen Sie professionelle KI-Videos mit unserem Flaggschiff-Modell",
+        "feature1": "Hochwertige Videogenerierung bis 1080p",
+        "feature2": "Natürliche Bewegung und flüssige Animationen",
+        "feature3": "Ausgezeichnetes Prompt-Verständnis",
+        "feature4": "Schnelle Generierungsgeschwindigkeit",
+        "feature5": "Unterstützt Text- und Bildeingabe"
+      },
+      "sora2": {
+        "description": "OpenAIs fortschrittlichstes Videogenerierungsmodell",
+        "feature1": "Modernste Videoqualität",
+        "feature2": "Verständnis komplexer Szenen",
+        "feature3": "Realistische Physiksimulation",
+        "feature4": "Mehrere Motive und Interaktionen",
+        "feature5": "Erweiterte Dauerunterstützung",
+        "tip1": "Beschreiben Sie detaillierte Szenen mit mehreren Elementen",
+        "tip2": "Fügen Sie physische Interaktionen für realistische Ergebnisse hinzu",
+        "tip3": "Spezifizieren Sie Kamerabewegungen für filmische Effekte",
+        "tip4": "Verwenden Sie längere Dauern für komplexe Erzählungen"
+      },
+      "veo3": {
+        "description": "Googles leistungsstarke Videogenerierungs-KI",
+        "feature1": "Fotorealistische Videogenerierung",
+        "feature2": "Fortgeschrittene zeitliche Kohärenz",
+        "feature3": "Vielfältige Stilfähigkeiten",
+        "feature4": "Optimiert für Langform-Inhalte",
+        "feature5": "Ausgezeichnete Farbgenauigkeit",
+        "tip1": "Ideal für realistische Videos im Dokumentarstil",
+        "tip2": "Hervorragend bei natürlichen Landschaften und Umgebungen",
+        "tip3": "Fügen Sie Beleuchtungsdetails für beste Ergebnisse hinzu",
+        "tip4": "Funktioniert gut mit atmosphärischen Beschreibungen"
+      },
+      "wan25": {
+        "description": "Videogenerierung mit synchronisiertem Audio",
+        "feature1": "Integrierte Audiogenerierung",
+        "feature2": "Synchronisierte Soundeffekte",
+        "feature3": "Hintergrundmusik-Unterstützung",
+        "feature4": "Voice-Over-Fähigkeiten",
+        "feature5": "Mehrsprachige Audio-Unterstützung",
+        "tip1": "Beschreiben Sie Sounds und Musik in Ihrem Prompt",
+        "tip2": "Spezifizieren Sie Umgebungsaudio für mehr Immersion",
+        "tip3": "Fügen Sie Dialogbeschreibungen für Sprachgenerierung hinzu",
+        "tip4": "Ideal für Videos, die Soundeffekte benötigen"
+      },
+      "klingai": {
+        "description": "Schnelle und effiziente Videogenerierung",
+        "feature1": "Schnelle Videogenerierung",
+        "feature2": "Kostengünstige Verarbeitung",
+        "feature3": "Gut für schnelle Iterationen",
+        "feature4": "Konsistente Stilausgabe",
+        "feature5": "Optimiert für Social-Media-Formate",
+        "tip1": "Ideal für schnelle Prototypen und Entwürfe",
+        "tip2": "Funktioniert gut mit einfachen, klaren Prompts",
+        "tip3": "Perfekt für Social-Media-Inhalte",
+        "tip4": "Gutes Gleichgewicht zwischen Geschwindigkeit und Qualität"
+      },
+      "hailuoai": {
+        "description": "Erschwingliche KI-Videogenerierung für alle",
+        "feature1": "Günstigste Option",
+        "feature2": "Gute Qualität für den Preis",
+        "feature3": "Schnelle Verarbeitungszeiten",
+        "feature4": "Einfach zu bedienen",
+        "feature5": "Ideal für Anfänger",
+        "tip1": "Perfekt zum Lernen und Experimentieren",
+        "tip2": "Verwenden Sie klare, einfache Prompts",
+        "tip3": "Ideal für persönliche Projekte",
+        "tip4": "Perfekt zum schnellen Ausprobieren verschiedener Ideen"
+      }
+    }
   },
   "sidebar": {
     "videoAI": "VIDEO-KI",

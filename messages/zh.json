@@ -64,6 +64,7 @@
     "videoAIModels": "视频 AI 模型",
     "comingSoon": "即将推出",
     "credits": "积分",
+    "creditsRequired": "所需积分：",
     "proTips": "专业提示",
     "tip1": "使用详细的提示词获得更好的结果",
     "tip2": "先用低分辨率测试创意",
@@ -71,8 +72,10 @@
     "tip4": "使用 Wan 2.5 生成带音频的视频",
     "textToVideo": "文字转视频",
     "textToVideoDesc": "从文字描述生成视频",
+    "textToVideoFullDesc": "从文字描述生成精美的 AI 视频",
     "imageToVideo": "图像转视频",
     "imageToVideoDesc": "用 AI 让图像动起来",
+    "imageToVideoFullDesc": "用 AI 动画让您的图像动起来",
     "videoToVideo": "视频转视频",
     "videoEffects": "视频特效",
     "textToImage": "文字转图像",
@@ -82,7 +85,10 @@
     "prompt": {
       "label": "提示词",
       "placeholder": "描述您想要创建的视频...",
-      "required": "提示词（必填）"
+      "required": "提示词（必填）",
+      "motionOptional": "动作提示词（可选）",
+      "motionHint": "留空则自动生成动画",
+      "motionPlaceholder": "描述您希望图像如何动起来...（例如：'镜头缓慢推进，树叶在风中轻轻摇曳'）"
     },
     "model": {
       "label": "模型",
@@ -100,14 +106,111 @@
     },
     "generate": "生成视频",
     "generating": "生成中...",
+    "creating": "创建中...",
+    "create": "创建",
     "uploadImage": "上传图像",
+    "uploadImageRequired": "上传图像",
     "dropImage": "拖放图像到此处或点击上传",
     "sampleVideo": "示例视频",
     "previewHere": "预览将在此处显示",
     "createdResults": "生成的视频将在此处显示",
     "features": "功能特点",
     "tips": "获得更好结果的技巧",
-    "upgradeNow": "立即升级"
+    "upgradeNow": "立即升级",
+    "textToVideoTips": {
+      "tip1": "在提示词中具体而详细",
+      "tip2": "包含灯光、摄像机角度和运动的细节",
+      "tip3": "更高分辨率需要更多积分",
+      "tip4": "更长的视频提供更流畅的过渡"
+    },
+    "imageToVideoTips": {
+      "tip1": "使用清晰主体的高质量图像",
+      "tip2": "在提示词中描述您想要的动作",
+      "tip3": "避免过于复杂的场景",
+      "tip4": "肖像或风景效果最佳"
+    },
+    "models": {
+      "seedance2": {
+        "description": "我们的下一代 AI 视频模型（即将推出）",
+        "feature1": "下一代视频质量",
+        "feature2": "增强的运动一致性",
+        "feature3": "支持长达 30 秒的视频",
+        "feature4": "高级风格迁移",
+        "feature5": "实时预览（即将推出）",
+        "tip1": "Seedance 2.0 目前处于预览阶段",
+        "tip2": "同时可使用 Seedance 1.5 Pro",
+        "tip3": "敬请期待正式发布",
+        "tip4": "高级功能即将推出"
+      },
+      "seedance15pro": {
+        "description": "使用我们的旗舰模型创建专业 AI 视频",
+        "feature1": "高达 1080p 的高质量视频生成",
+        "feature2": "自然流畅的动作和动画",
+        "feature3": "出色的提示词理解能力",
+        "feature4": "快速生成速度",
+        "feature5": "支持文字和图像输入"
+      },
+      "sora2": {
+        "description": "OpenAI 最先进的视频生成模型",
+        "feature1": "最先进的视频质量",
+        "feature2": "复杂场景理解",
+        "feature3": "逼真的物理模拟",
+        "feature4": "多主体和交互",
+        "feature5": "支持更长时长",
+        "tip1": "描述包含多个元素的详细场景",
+        "tip2": "包含物理交互以获得逼真效果",
+        "tip3": "指定镜头移动以获得电影效果",
+        "tip4": "使用更长时长来展现复杂叙事"
+      },
+      "veo3": {
+        "description": "Google 强大的视频生成 AI",
+        "feature1": "照片级逼真的视频生成",
+        "feature2": "高级时间一致性",
+        "feature3": "多样化的风格能力",
+        "feature4": "针对长视频优化",
+        "feature5": "出色的色彩准确度",
+        "tip1": "最适合逼真和纪录片风格的视频",
+        "tip2": "擅长自然景观和环境",
+        "tip3": "包含灯光细节以获得最佳效果",
+        "tip4": "适合氛围感的描述"
+      },
+      "wan25": {
+        "description": "带同步音频的视频生成",
+        "feature1": "内置音频生成",
+        "feature2": "同步音效",
+        "feature3": "背景音乐支持",
+        "feature4": "配音能力",
+        "feature5": "多语言音频支持",
+        "tip1": "在提示词中描述声音和音乐",
+        "tip2": "指定环境音效以增强沉浸感",
+        "tip3": "包含对话描述以生成语音",
+        "tip4": "最适合需要音效的视频"
+      },
+      "klingai": {
+        "description": "快速高效的视频生成",
+        "feature1": "快速视频生成",
+        "feature2": "经济实惠的处理",
+        "feature3": "适合快速迭代",
+        "feature4": "一致的风格输出",
+        "feature5": "针对社交媒体格式优化",
+        "tip1": "适合快速原型和草稿",
+        "tip2": "简单清晰的提示词效果好",
+        "tip3": "适合社交媒体内容",
+        "tip4": "速度和质量的良好平衡"
+      },
+      "hailuoai": {
+        "description": "人人可用的经济实惠 AI 视频生成",
+        "feature1": "最实惠的选择",
+        "feature2": "性价比高",
+        "feature3": "处理速度快",
+        "feature4": "易于使用",
+        "feature5": "非常适合初学者",
+        "tip1": "适合学习和实验",
+        "tip2": "使用清晰简单的提示词",
+        "tip3": "适合个人项目",
+        "tip4": "适合快速尝试不同想法"
+      }
+    }
   },
   "sidebar": {
     "videoAI": "视频 AI",

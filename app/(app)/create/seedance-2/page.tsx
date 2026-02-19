@@ -6,25 +6,15 @@ export default function Seedance2Page() {
   return (
     <VideoGenerator
       title="Seedance 2.0"
-      description="Our next-generation AI video model (Coming Soon)"
+      descriptionKey="seedance2"
       defaultModel="seedance-1.5-pro"
+      modelKey="seedance2"
       modelInfo={{
         name: 'Seedance 2.0',
         tag: 'New',
-        features: [
-          'Next-generation video quality',
-          'Enhanced motion coherence',
-          'Longer video support up to 30 seconds',
-          'Advanced style transfer',
-          'Real-time preview (coming soon)',
-        ],
+        featureCount: 5,
       }}
-      tips={[
-        'Seedance 2.0 is currently in preview',
-        'Using Seedance 1.5 Pro in the meantime',
-        'Stay tuned for the full release',
-        'Premium features will be available soon',
-      ]}
+      tipCount={4}
     />
   )
 }

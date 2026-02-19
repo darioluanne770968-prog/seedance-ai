@@ -6,24 +6,14 @@ export default function Veo3Page() {
   return (
     <VideoGenerator
       title="Veo 3"
-      description="Google's powerful video generation AI"
+      descriptionKey="veo3"
       defaultModel="veo-3"
+      modelKey="veo3"
       modelInfo={{
         name: 'Veo 3',
-        features: [
-          'Photorealistic video generation',
-          'Advanced temporal consistency',
-          'Diverse style capabilities',
-          'Optimized for long-form content',
-          'Excellent color accuracy',
-        ],
+        featureCount: 5,
       }}
-      tips={[
-        'Best for realistic and documentary-style videos',
-        'Excels at natural landscapes and environments',
-        'Include lighting details for best results',
-        'Works well with atmospheric descriptions',
-      ]}
+      tipCount={4}
     />
   )
 }

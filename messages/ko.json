@@ -64,6 +64,7 @@
     "videoAIModels": "비디오 AI 모델",
     "comingSoon": "출시 예정",
     "credits": "크레딧",
+    "creditsRequired": "필요 크레딧:",
     "proTips": "전문가 팁",
     "tip1": "상세한 프롬프트로 더 나은 결과를",
     "tip2": "낮은 해상도로 아이디어 테스트",
@@ -71,8 +72,10 @@
     "tip4": "오디오 비디오에는 Wan 2.5 사용",
     "textToVideo": "텍스트를 비디오로",
     "textToVideoDesc": "텍스트에서 비디오 생성",
+    "textToVideoFullDesc": "텍스트 설명에서 놀라운 AI 비디오 생성",
     "imageToVideo": "이미지를 비디오로",
     "imageToVideoDesc": "AI로 이미지에 생명을 불어넣기",
+    "imageToVideoFullDesc": "AI 애니메이션으로 이미지에 생명을 불어넣기",
     "videoToVideo": "비디오를 비디오로",
     "videoEffects": "비디오 효과",
     "textToImage": "텍스트를 이미지로",
@@ -82,7 +85,10 @@
     "prompt": {
       "label": "프롬프트",
       "placeholder": "만들고 싶은 비디오를 설명하세요...",
-      "required": "프롬프트 (필수)"
+      "required": "프롬프트 (필수)",
+      "motionOptional": "모션 프롬프트 (선택)",
+      "motionHint": "자동 애니메이션은 비워두세요",
+      "motionPlaceholder": "이미지를 어떻게 애니메이션할지 설명하세요... (예: '카메라가 천천히 줌인, 나뭇잎이 바람에 흔들림')"
     },
     "model": {
       "label": "AI 모델",
@@ -100,14 +106,111 @@
     },
     "generate": "비디오 생성",
     "generating": "생성 중...",
+    "creating": "만드는 중...",
+    "create": "만들기",
     "uploadImage": "이미지 업로드",
+    "uploadImageRequired": "이미지 업로드",
     "dropImage": "이미지를 여기에 드롭하거나 클릭하여 업로드",
     "sampleVideo": "샘플 비디오",
     "previewHere": "미리보기가 여기에 표시됩니다",
     "createdResults": "생성된 비디오가 여기에 표시됩니다",
     "features": "기능",
     "tips": "더 나은 결과를 위한 팁",
-    "upgradeNow": "지금 업그레이드"
+    "upgradeNow": "지금 업그레이드",
+    "textToVideoTips": {
+      "tip1": "프롬프트에서 구체적이고 상세하게",
+      "tip2": "조명, 카메라 각도, 움직임에 대한 세부 사항 포함",
+      "tip3": "높은 해상도는 더 많은 크레딧 사용",
+      "tip4": "긴 비디오는 더 부드러운 전환 제공"
+    },
+    "imageToVideoTips": {
+      "tip1": "선명한 피사체가 있는 고품질 이미지 사용",
+      "tip2": "프롬프트에서 원하는 움직임 설명",
+      "tip3": "지나치게 복잡한 장면 피하기",
+      "tip4": "인물 또는 풍경에서 최상의 결과"
+    },
+    "models": {
+      "seedance2": {
+        "description": "차세대 AI 비디오 모델 (출시 예정)",
+        "feature1": "차세대 비디오 품질",
+        "feature2": "향상된 모션 일관성",
+        "feature3": "최대 30초 긴 비디오 지원",
+        "feature4": "고급 스타일 전송",
+        "feature5": "실시간 미리보기 (출시 예정)",
+        "tip1": "Seedance 2.0은 현재 프리뷰 중",
+        "tip2": "그동안 Seedance 1.5 Pro 사용",
+        "tip3": "정식 출시를 기대해주세요",
+        "tip4": "프리미엄 기능 곧 출시"
+      },
+      "seedance15pro": {
+        "description": "플래그십 모델로 전문적인 AI 비디오 제작",
+        "feature1": "최대 1080p 고품질 비디오 생성",
+        "feature2": "자연스러운 모션과 부드러운 애니메이션",
+        "feature3": "뛰어난 프롬프트 이해력",
+        "feature4": "빠른 생성 속도",
+        "feature5": "텍스트와 이미지 입력 모두 지원"
+      },
+      "sora2": {
+        "description": "OpenAI의 가장 진보된 비디오 생성 모델",
+        "feature1": "최첨단 비디오 품질",
+        "feature2": "복잡한 장면 이해",
+        "feature3": "사실적인 물리 시뮬레이션",
+        "feature4": "다중 피사체 및 상호작용",
+        "feature5": "확장된 길이 지원",
+        "tip1": "여러 요소가 포함된 상세한 장면 설명",
+        "tip2": "사실적인 결과를 위해 물리적 상호작용 포함",
+        "tip3": "영화적 효과를 위해 카메라 움직임 지정",
+        "tip4": "복잡한 내러티브에 긴 길이 사용"
+      },
+      "veo3": {
+        "description": "Google의 강력한 비디오 생성 AI",
+        "feature1": "사진처럼 사실적인 비디오 생성",
+        "feature2": "고급 시간적 일관성",
+        "feature3": "다양한 스타일 기능",
+        "feature4": "장편 콘텐츠에 최적화",
+        "feature5": "뛰어난 색상 정확도",
+        "tip1": "사실적이고 다큐멘터리 스타일 비디오에 최적",
+        "tip2": "자연 풍경과 환경에 뛰어남",
+        "tip3": "최상의 결과를 위해 조명 세부 사항 포함",
+        "tip4": "분위기 있는 설명과 잘 어울림"
+      },
+      "wan25": {
+        "description": "동기화된 오디오가 포함된 비디오 생성",
+        "feature1": "내장 오디오 생성",
+        "feature2": "동기화된 사운드 효과",
+        "feature3": "배경 음악 지원",
+        "feature4": "나레이션 기능",
+        "feature5": "다국어 오디오 지원",
+        "tip1": "프롬프트에서 소리와 음악 설명",
+        "tip2": "몰입감을 위해 환경 오디오 지정",
+        "tip3": "음성 생성을 위해 대화 설명 포함",
+        "tip4": "사운드 효과가 필요한 비디오에 최적"
+      },
+      "klingai": {
+        "description": "빠르고 효율적인 비디오 생성",
+        "feature1": "빠른 비디오 생성",
+        "feature2": "비용 효율적인 처리",
+        "feature3": "빠른 반복에 적합",
+        "feature4": "일관된 스타일 출력",
+        "feature5": "SNS 형식에 최적화",
+        "tip1": "빠른 프로토타입과 초안에 적합",
+        "tip2": "간단하고 명확한 프롬프트와 잘 작동",
+        "tip3": "SNS 콘텐츠에 이상적",
+        "tip4": "속도와 품질의 좋은 균형"
+      },
+      "hailuoai": {
+        "description": "모두를 위한 합리적인 AI 비디오 생성",
+        "feature1": "가장 합리적인 선택",
+        "feature2": "가격 대비 좋은 품질",
+        "feature3": "빠른 처리 시간",
+        "feature4": "사용하기 쉬움",
+        "feature5": "초보자에게 적합",
+        "tip1": "학습과 실험에 적합",
+        "tip2": "명확하고 간단한 프롬프트 사용",
+        "tip3": "개인 프로젝트에 적합",
+        "tip4": "다양한 아이디어를 빠르게 시도하기에 이상적"
+      }
+    }
   },
   "sidebar": {
     "videoAI": "비디오 AI",

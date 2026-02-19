@@ -6,24 +6,14 @@ export default function HailuoAIPage() {
   return (
     <VideoGenerator
       title="Hailuo AI"
-      description="Affordable AI video generation for everyone"
+      descriptionKey="hailuoai"
       defaultModel="hailuo-ai"
+      modelKey="hailuoai"
       modelInfo={{
         name: 'Hailuo AI',
-        features: [
-          'Most affordable option',
-          'Good quality for the price',
-          'Fast processing times',
-          'Easy to use',
-          'Great for beginners',
-        ],
+        featureCount: 5,
       }}
-      tips={[
-        'Perfect for learning and experimentation',
-        'Use clear, simple prompts',
-        'Great for personal projects',
-        'Ideal for trying different ideas quickly',
-      ]}
+      tipCount={4}
     />
   )
 }

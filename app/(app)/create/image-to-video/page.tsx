@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { Sparkles, Volume2, VolumeX, Play } from 'lucide-react'
 import { ImageUploader } from '@/components/upload/ImageUploader'
 
@@ -39,6 +40,7 @@ const DURATIONS = [
 
 export default function ImageToVideoPage() {
   const router = useRouter()
+  const t = useTranslations('create')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [muted, setMuted] = useState(true)
@@ -103,9 +105,9 @@ export default function ImageToVideoPage() {
         <div className="max-w-xl mx-auto">
           {/* Page Title */}
           <div className="mb-6">
-            <h1 className="text-2xl font-bold mb-1">Image to Video</h1>
+            <h1 className="text-2xl font-bold mb-1">{t('imageToVideo')}</h1>
             <p className="text-sm text-muted-foreground">
-              Bring your images to life with AI animation
+              {t('imageToVideoFullDesc')}
             </p>
           </div>
 
@@ -119,7 +121,7 @@ export default function ImageToVideoPage() {
             {/* Image Upload */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                Upload Image <span className="text-red-500">*</span>
+                {t('uploadImageRequired')} <span className="text-red-500">*</span>
               </label>
               <ImageUploader
                 value={formData.sourceImage}
@@ -129,7 +131,7 @@ export default function ImageToVideoPage() {
 
             {/* Model Selection */}
             <div>
-              <label className="block text-sm font-medium mb-2">Model</label>
+              <label className="block text-sm font-medium mb-2">{t('model.label')}</label>
               <select
                 value={formData.model}
                 onChange={(e) => setFormData({ ...formData, model: e.target.value })}
@@ -141,7 +143,7 @@ export default function ImageToVideoPage() {
                     value={model.id}
                     disabled={model.comingSoon}
                   >
-                    {model.name} {model.tag && `(${model.tag})`} {model.comingSoon && '- Coming Soon'}
+                    {model.name} {model.tag && `(${model.tag})`} {model.comingSoon && `- ${t('comingSoon')}`}
                   </option>
                 ))}
               </select>
@@ -150,18 +152,18 @@ export default function ImageToVideoPage() {
             {/* Prompt */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                Motion Prompt (Optional)
+                {t('prompt.motionOptional')}
               </label>
               <textarea
                 value={formData.prompt}
                 onChange={(e) => setFormData({ ...formData, prompt: e.target.value })}
-                placeholder="Describe how you want the image to animate... (e.g., 'Camera slowly zooms in, leaves gently swaying in the wind')"
+                placeholder={t('prompt.motionPlaceholder')}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-24 resize-none"
                 maxLength={2000}
               />
               <div className="flex justify-between mt-1">
                 <span className="text-xs text-muted-foreground">
-                  Leave blank for automatic animation
+                  {t('prompt.motionHint')}
                 </span>
                 <span className="text-xs text-muted-foreground">
                   {formData.prompt.length} / 2000
@@ -171,7 +173,7 @@ export default function ImageToVideoPage() {
 
             {/* Resolution */}
             <div>
-              <label className="block text-sm font-medium mb-2">Resolution</label>
+              <label className="block text-sm font-medium mb-2">{t('resolution.label')}</label>
               <div className="flex gap-2">
                 {RESOLUTIONS.map((res) => (
                   <button
@@ -193,7 +195,7 @@ export default function ImageToVideoPage() {
 
             {/* Aspect Ratio */}
             <div>
-              <label className="block text-sm font-medium mb-2">Aspect Ratio</label>
+              <label className="block text-sm font-medium mb-2">{t('aspectRatio.label')}</label>
               <select
                 value={formData.aspectRatio}
                 onChange={(e) => setFormData({ ...formData, aspectRatio: e.target.value })}
@@ -209,7 +211,7 @@ export default function ImageToVideoPage() {
 
             {/* Duration */}
             <div>
-              <label className="block text-sm font-medium mb-2">Duration</label>
+              <label className="block text-sm font-medium mb-2">{t('duration.label')}</label>
               <div className="flex gap-2">
                 {DURATIONS.map((dur) => (
                   <button
@@ -230,7 +232,7 @@ export default function ImageToVideoPage() {
 
             {/* Credits Required */}
             <div className="flex items-center justify-between py-3 px-4 bg-white/5 rounded-lg">
-              <span className="text-sm text-muted-foreground">Credits required:</span>
+              <span className="text-sm text-muted-foreground">{t('creditsRequired')}</span>
               <span className="font-semibold text-yellow-400">{creditsRequired}</span>
             </div>
 
@@ -243,12 +245,12 @@ export default function ImageToVideoPage() {
               {loading ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Creating...</span>
+                  <span>{t('creating')}</span>
                 </>
               ) : (
                 <>
                   <Sparkles className="w-5 h-5" />
-                  <span>Create</span>
+                  <span>{t('create')}</span>
                 </>
               )}
             </button>
@@ -259,9 +261,9 @@ export default function ImageToVideoPage() {
       {/* Right - Preview */}
       <div className="hidden lg:block w-[500px] border-l border-white/10 p-6 bg-black/20">
         <div className="mb-4">
-          <h2 className="text-lg font-semibold">Sample Video</h2>
+          <h2 className="text-lg font-semibold">{t('sampleVideo')}</h2>
           <p className="text-xs text-muted-foreground">
-            (The Created Video results will appear here)
+            ({t('createdResults')})
           </p>
         </div>
 
@@ -292,19 +294,19 @@ export default function ImageToVideoPage() {
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/80 to-blue-900/80">
             <div className="text-center">
               <Play className="w-16 h-16 mx-auto mb-4 text-white/50" />
-              <p className="text-sm text-white/50">Preview will appear here</p>
+              <p className="text-sm text-white/50">{t('previewHere')}</p>
             </div>
           </div>
         </div>
 
         {/* Tips */}
         <div className="mt-6 p-4 bg-white/5 rounded-lg">
-          <h3 className="font-medium mb-2">Tips for better results</h3>
+          <h3 className="font-medium mb-2">{t('tips')}</h3>
           <ul className="text-xs text-muted-foreground space-y-2">
-            <li>• Use high-quality images with clear subjects</li>
-            <li>• Describe the motion you want in the prompt</li>
-            <li>• Avoid overly complex scenes</li>
-            <li>• Best results with portraits or landscapes</li>
+            <li>• {t('imageToVideoTips.tip1')}</li>
+            <li>• {t('imageToVideoTips.tip2')}</li>
+            <li>• {t('imageToVideoTips.tip3')}</li>
+            <li>• {t('imageToVideoTips.tip4')}</li>
           </ul>
         </div>
       </div>

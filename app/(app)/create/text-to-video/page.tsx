@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { Sparkles, Volume2, VolumeX, Play } from 'lucide-react'
 
 const AI_MODELS = [
@@ -38,6 +39,7 @@ const DURATIONS = [
 
 export default function TextToVideoPage() {
   const router = useRouter()
+  const t = useTranslations('create')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [muted, setMuted] = useState(true)
@@ -100,9 +102,9 @@ export default function TextToVideoPage() {
         <div className="max-w-xl mx-auto">
           {/* Page Title */}
           <div className="mb-6">
-            <h1 className="text-2xl font-bold mb-1">Text to Video</h1>
+            <h1 className="text-2xl font-bold mb-1">{t('textToVideo')}</h1>
             <p className="text-sm text-muted-foreground">
-              Generate stunning AI videos from text descriptions
+              {t('textToVideoFullDesc')}
             </p>
           </div>
 
@@ -115,7 +117,7 @@ export default function TextToVideoPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Model Selection */}
             <div>
-              <label className="block text-sm font-medium mb-2">Model</label>
+              <label className="block text-sm font-medium mb-2">{t('model.label')}</label>
               <select
                 value={formData.model}
                 onChange={(e) => setFormData({ ...formData, model: e.target.value })}
@@ -127,7 +129,7 @@ export default function TextToVideoPage() {
                     value={model.id}
                     disabled={model.comingSoon}
                   >
-                    {model.name} {model.tag && `(${model.tag})`} {model.comingSoon && '- Coming Soon'}
+                    {model.name} {model.tag && `(${model.tag})`} {model.comingSoon && `- ${t('comingSoon')}`}
                   </option>
                 ))}
               </select>
@@ -136,12 +138,12 @@ export default function TextToVideoPage() {
             {/* Prompt */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                Prompt (Required)
+                {t('prompt.required')}
               </label>
               <textarea
                 value={formData.prompt}
                 onChange={(e) => setFormData({ ...formData, prompt: e.target.value })}
-                placeholder="A quiet forest path in early autumn, with sunlight filtering through golden leaves..."
+                placeholder={t('prompt.placeholder')}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-28 resize-none"
                 maxLength={2000}
                 required
@@ -155,7 +157,7 @@ export default function TextToVideoPage() {
 
             {/* Resolution */}
             <div>
-              <label className="block text-sm font-medium mb-2">Resolution</label>
+              <label className="block text-sm font-medium mb-2">{t('resolution.label')}</label>
               <div className="flex gap-2">
                 {RESOLUTIONS.map((res) => (
                   <button
@@ -177,7 +179,7 @@ export default function TextToVideoPage() {
 
             {/* Aspect Ratio */}
             <div>
-              <label className="block text-sm font-medium mb-2">Aspect Ratio</label>
+              <label className="block text-sm font-medium mb-2">{t('aspectRatio.label')}</label>
               <select
                 value={formData.aspectRatio}
                 onChange={(e) => setFormData({ ...formData, aspectRatio: e.target.value })}
@@ -193,7 +195,7 @@ export default function TextToVideoPage() {
 
             {/* Duration */}
             <div>
-              <label className="block text-sm font-medium mb-2">Duration</label>
+              <label className="block text-sm font-medium mb-2">{t('duration.label')}</label>
               <div className="flex gap-2">
                 {DURATIONS.map((dur) => (
                   <button
@@ -214,7 +216,7 @@ export default function TextToVideoPage() {
 
             {/* Credits Required */}
             <div className="flex items-center justify-between py-3 px-4 bg-white/5 rounded-lg">
-              <span className="text-sm text-muted-foreground">Credits required:</span>
+              <span className="text-sm text-muted-foreground">{t('creditsRequired')}</span>
               <span className="font-semibold text-yellow-400">{creditsRequired}</span>
             </div>
 
@@ -227,12 +229,12 @@ export default function TextToVideoPage() {
               {loading ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Creating...</span>
+                  <span>{t('creating')}</span>
                 </>
               ) : (
                 <>
                   <Sparkles className="w-5 h-5" />
-                  <span>Create</span>
+                  <span>{t('create')}</span>
                 </>
               )}
             </button>
@@ -243,9 +245,9 @@ export default function TextToVideoPage() {
       {/* Right - Preview */}
       <div className="hidden lg:block w-[500px] border-l border-white/10 p-6 bg-black/20">
         <div className="mb-4">
-          <h2 className="text-lg font-semibold">Sample Video</h2>
+          <h2 className="text-lg font-semibold">{t('sampleVideo')}</h2>
           <p className="text-xs text-muted-foreground">
-            (The Created Video results will appear here)
+            ({t('createdResults')})
           </p>
         </div>
 
@@ -276,19 +278,19 @@ export default function TextToVideoPage() {
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/80 to-blue-900/80">
             <div className="text-center">
               <Play className="w-16 h-16 mx-auto mb-4 text-white/50" />
-              <p className="text-sm text-white/50">Preview will appear here</p>
+              <p className="text-sm text-white/50">{t('previewHere')}</p>
             </div>
           </div>
         </div>
 
         {/* Tips */}
         <div className="mt-6 p-4 bg-white/5 rounded-lg">
-          <h3 className="font-medium mb-2">Tips for better results</h3>
+          <h3 className="font-medium mb-2">{t('tips')}</h3>
           <ul className="text-xs text-muted-foreground space-y-2">
-            <li>• Be specific and descriptive in your prompts</li>
-            <li>• Include details about lighting, camera angles, and movement</li>
-            <li>• Higher resolution uses more credits</li>
-            <li>• Longer videos provide smoother transitions</li>
+            <li>• {t('textToVideoTips.tip1')}</li>
+            <li>• {t('textToVideoTips.tip2')}</li>
+            <li>• {t('textToVideoTips.tip3')}</li>
+            <li>• {t('textToVideoTips.tip4')}</li>
           </ul>
         </div>
       </div>
