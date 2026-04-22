@@ -12,6 +12,7 @@ export const authConfig = {
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      allowDangerousEmailAccountLinking: true,
     }),
     Credentials({
       credentials: {
@@ -55,20 +56,9 @@ export const authConfig = {
     error: '/login',
   },
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id
-
-        // Update user provider info on Google login
-        if (account?.provider === 'google') {
-          await prisma.user.update({
-            where: { id: user.id },
-            data: {
-              provider: 'google',
-              providerId: account.providerAccountId,
-            },
-          })
-        }
       }
       return token
     },
@@ -81,6 +71,18 @@ export const authConfig = {
   },
   session: {
     strategy: 'jwt',
+  },
+  debug: true,
+  logger: {
+    error: (code, ...message) => {
+      console.error('[NextAuth Error]', code, message)
+    },
+    warn: (code, ...message) => {
+      console.warn('[NextAuth Warn]', code, message)
+    },
+    debug: (code, ...message) => {
+      console.log('[NextAuth Debug]', code, message)
+    },
   },
 } satisfies NextAuthConfig
 

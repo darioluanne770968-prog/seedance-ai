@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const protectedRoutes = ['/dashboard', '/create', '/videos', '/account']
 const authPages = ['/login', '/register']
+const canonicalHost = 'www.seedances.net'
 
 function hasSessionCookie(req: NextRequest): boolean {
   // Support both Auth.js v5 and older NextAuth cookie names.
@@ -14,6 +15,16 @@ function hasSessionCookie(req: NextRequest): boolean {
 }
 
 export default function middleware(req: NextRequest) {
+  const host = req.headers.get('host') ?? req.nextUrl.host
+
+  // Enforce a single canonical production host to avoid auth/cookie domain drift.
+  if (host === 'seedances.net') {
+    const url = req.nextUrl.clone()
+    url.host = canonicalHost
+    url.protocol = 'https:'
+    return NextResponse.redirect(url, 308)
+  }
+
   const { pathname } = req.nextUrl
   const isLoggedIn = hasSessionCookie(req)
 

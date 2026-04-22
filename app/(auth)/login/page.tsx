@@ -39,8 +39,42 @@ export default function LoginPage() {
   }
 
   const handleGoogleSignIn = async () => {
+    setError('')
     setLoading(true)
-    await signIn('google', { callbackUrl: '/dashboard' })
+
+    try {
+      const csrfRes = await fetch('/api/auth/csrf', { cache: 'no-store' })
+      if (!csrfRes.ok) {
+        throw new Error('Failed to initialize Google sign-in')
+      }
+
+      const { csrfToken } = await csrfRes.json()
+      if (!csrfToken) {
+        throw new Error('Missing CSRF token')
+      }
+
+      const form = document.createElement('form')
+      form.method = 'POST'
+      form.action = '/api/auth/signin/google'
+
+      const csrfInput = document.createElement('input')
+      csrfInput.type = 'hidden'
+      csrfInput.name = 'csrfToken'
+      csrfInput.value = csrfToken
+      form.appendChild(csrfInput)
+
+      const callbackInput = document.createElement('input')
+      callbackInput.type = 'hidden'
+      callbackInput.name = 'callbackUrl'
+      callbackInput.value = '/dashboard'
+      form.appendChild(callbackInput)
+
+      document.body.appendChild(form)
+      form.submit()
+    } catch (err) {
+      setError('Google sign-in failed. Please try again.')
+      setLoading(false)
+    }
   }
 
   return (
@@ -124,6 +158,7 @@ export default function LoginPage() {
           </div>
 
           <button
+            type="button"
             onClick={handleGoogleSignIn}
             disabled={loading}
             className="w-full py-3 px-4 bg-white/5 border border-white/10 rounded-lg font-medium hover:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
